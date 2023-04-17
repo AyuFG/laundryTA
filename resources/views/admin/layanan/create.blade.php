@@ -1,43 +1,54 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Tambah sublayanan')
+@section('title', 'Tambah Layanan')
 
 @section('content')
 
-  <!--Tambah sublayanan-->
-  <div class="col-lg-12 col-lg-12 form-wrapper" id="tambah-sublayanan">
-      <div class="card">
-      <div class="card-header">
-      <h4 class="card-title">Input Data sublayanan</h4>
-      </div>
-      <div class="card-body">
-        @if(auth()->user()->roles_id == 1)
-            <form method="POST" action="{{ route('super.sublayanan.store') }}" enctype='multipart/form-data'>
-        @elseif(auth()->user()->roles_id == 2)
-            <form method="POST" action="{{ route('admin.sublayanan.store') }}" enctype='multipart/form-data'>
-        @endif
-            @csrf
-          <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Judul</label>
-            <div class="col-sm-9">
-              <textarea class="form-control custom-txt-area" placeholder="Judul..." name="judul" id="judul" required></textarea>
+<!--tambah layanan-->
+<div class="col-lg-12 col-lg-12 form-wrapper" id="tambah-layanan">
+    <form action="">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">
+                    <a class="pr-3 text-dark" href="#"
+                        ><i class="fa fa-arrow-left" aria-hidden="true"></i></a
+                    ><b>Tambah Pelayanan</b>
+                </h4>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-dark btn-sm">
+                        Simpan
+                    </button>
+                </div>
             </div>
-          </div>
-          <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Deskripsi</label>
-            <div class="col-sm-9">
-              <textarea class="form-control custom-txt-area" placeholder="Deskripsi" name="deskripsi" id="deskripsi" required></textarea>
+            <div class="card-body p-3 mb-2 bg-secondary text-white">
+                @csrf
+                <div class="d-flex justify-content-center m-4">
+                    <label for="file_input"
+                        ><i class="fa-solid fa-camera fa-2xl"></i></label
+                    ><input
+                        type="file"
+                        id="file_input"
+                        class="visually-hidden"
+                    />
+                </div>
+                <div class="mb-3 pb-4 row">
+                    <label class="col-sm-3 col-form-label"
+                        >Nama Pelayanan :
+                    </label>
+                    <div class="col-sm-9">
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="nama-layanan"
+                            id="nama-layanan"
+                            required
+                        />
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="mb-3 row">
-            <div class="col-sm-9">
-              <button type="submit" class="btn btn-primary ">Tambah</button>
-            </div>
-          </div>
-          </form>
         </div>
-      </div>
-    </div>
-    <!--./Tambah sublayanan-->
+    </form>
+</div>
+<!--./tambah layanan-->
 
 @endsection

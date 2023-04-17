@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('opsi_pengiriman');
             $table->string('pembayaran');
             $table->string('foto_pembayaran');
-            $table->string('status');
+            $table->string('status_order');
             $table->timestamps();
         });
     }

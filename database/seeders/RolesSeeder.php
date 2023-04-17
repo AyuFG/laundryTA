@@ -15,16 +15,20 @@ class RolesSeeder extends Seeder
     {
         $roles = [
             [
+                'id' => 99,
+                'nama_roles' => 'Guest'
+            ],
+            [
                 'id' => 1,
-                'role_name' => 'SuperAdmin'
+                'nama_roles' => 'SuperAdmin'
             ],
             [
                 'id' => 2,
-                'role_name' => 'Admin'
+                'nama_roles' => 'Admin'
             ],
             [
                 'id' => 3,
-                'role_name' => 'Member'
+                'nama_roles' => 'Member'
             ],
         ];
         Role::query()->insert($roles);

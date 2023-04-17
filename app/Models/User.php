@@ -33,6 +33,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'roles_id',
+        'acc_verified',
     ];
 
     /**
@@ -41,6 +42,5 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
     ];
 }

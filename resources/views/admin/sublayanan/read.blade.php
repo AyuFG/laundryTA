@@ -1,53 +1,99 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Detail sublayanan')
+@section('title', 'Deskripsi')
 
 @section('content')
 
-<!--Detail sublayanan-->
+<!--detail sublayanan-->
 <div class="col-lg-12 col-lg-12 form-wrapper" id="detail-sublayanan">
-
-    <div class="card">
-    <div class="card-header">
-    <h4 class="card-title">Detail Data sublayanan</h4>
-    </div>
-    <div class="card-body">
-    @if(auth()->user()->roles_id == 1)
-        <form method="POST" action="{{ route('super.sublayanan.show',$sublayanan->id) }}" enctype='multipart/form-data'>
-    @elseif(auth()->user()->roles_id == 2)
-        <form method="POST" action="{{ route('admin.sublayanan.show',$sublayanan->id) }}" enctype='multipart/form-data'>
-    @endif
-      @method('PUT')
-      @csrf
-      <input type="hidden" value="$sublayanan->id" name="id">
-        <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Judul</label>
-          <div class="col-sm-9">
-            <textarea class="form-control custom-txt-area" placeholder="Judul..." name="judul" id="judul" value="{{  $sublayanan->judul  }}" disabled>{{ $sublayanan->judul }}</textarea>
-          </div>
-        </div>
-        <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Deskripsi</label>
-          <div class="col-sm-9">
-            <textarea class="form-control custom-txt-area" placeholder="Deskripsi" name="deskripsi" id="deskripsi" value="{{  $sublayanan->deskripsi  }}" disabled>{{ $sublayanan->deskripsi }}</textarea>
-          </div>
-        </div>
-        <div class="mb-3 row">
-            <div class="col-sm-9">
-              <a>
-                @if(auth()->user()->roles_id == 1)
-                    <a class="btn btn-primary" href="{{ route('super.sublayanan.index') }}">Kembali</a>
-                @elseif(auth()->user()->roles_id == 2)
-                    <a class="btn btn-primary" href="{{ route('admin.sublayanan.index') }}">Kembali</a>
-                @endif
-              </a>
+    <form action="">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">
+                    <a class="pr-3 text-dark" href="#"
+                        ><i class="fa fa-arrow-left" aria-hidden="true"></i></a
+                    ><b>Detail Jenis Pelayanan</b>
+                </h4>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-dark btn-sm">
+                        Simpan
+                    </button>
+                </div>
             </div>
-        </div><br><br><br>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!--./Detail sublayanan-->
+            <div class="card-body p-3 mb-2 bg-secondary text-white">
+                @csrf
+                <div class="d-flex justify-content-center m-4">
+                    <img src="assets/img/splash1.png" alt="" width="100">
+                </div>
+                <div class="mb-2 pb-2 row">
+                    <label class="col-sm-3 col-form-label"
+                        >Nama Jenis Pelayanan:
+                    </label>
+                    <div class="col-sm-9">
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="nama-sublayanan"
+                            id="nama-sublayanan"
+                            value="Medium"
+                            required disabled
+                        />
+                    </div>
+                </div>
+                <div class="mb-2 pb-2 row">
+                    <label class="col-sm-3 col-form-label">Deskripsi : </label>
+                    <div class="col-sm-9">
+                        <textarea
+                            class="form-control"
+                            name="deskripsi-sublayanan"
+                            id="deskripsi-sublayanan"
+                            required disabled cols="30" rows="10">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem eaque, iste similique eum maxime amet perspiciatis recusandae aliquid officia ad tempora, quos molestiae nemo! Nesciunt, nihil nostrum? Exercitationem, a adipisci!</textarea>
+                    </div>
+                </div>
+                <div class="mb-2 pb-2 row">
+                    <label class="col-sm-3 col-form-label"
+                        >Estimasi Waktu :
+                    </label>
+                    <div class="col-sm-9">
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="waktu-sublayanan"
+                            id="waktu-sublayanan"
+                            value="10"
+                            required disabled
+                        />
+                    </div>
+                </div>
+                <div class="mb-2 pb-2 row">
+                    <label class="col-sm-3 col-form-label">Harga : </label>
+                    <div class="col-sm-9">
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="harga-sublayanan"
+                            id="harga-sublayanan"
+                            value="10000"
+                            required disabled
+                        />
+                    </div>
+                </div>
+                <div class="mb-2 pb-2 row">
+                    <label class="col-sm-3 col-form-label"
+                        >Jenis Barang :
+                    </label>
+                    <select class="col-sm-9 col-form-label rounded-2" name="barang" id="barang">
+                      <option value="sepatu">sepatu</option>
+                      <option value="sendal">sendal</option>
+                      <option value="baju">baju</option>
+                      <option value="celana">Audi</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!--./detail sublayanan-->
 
 @endsection
 

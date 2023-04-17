@@ -4,44 +4,52 @@
 
 @section('content')
 
-<!--Edit layanan-->
+<!--edit layanan-->
 <div class="col-lg-12 col-lg-12 form-wrapper" id="edit-layanan">
-
-    <div class="card">
-    <div class="card-header">
-    <h4 class="card-title">Edit Data Layanan</h4>
-    </div>
-    <div class="card-body">
-    @if(auth()->user()->roles_id == 1)
-        <form method="POST" action="{{ route('super.layanan.update',$layanan->id) }}" enctype='multipart/form-data'>
-    @elseif(auth()->user()->roles_id == 2)
-        <form method="POST" action="{{ route('admin.layanan.update',$layanan->id) }}" enctype='multipart/form-data'>
-    @endif
-        @csrf
-      @method('PUT')
-      <input type="hidden" value="$layanan->id" name="id">
-        <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Judul</label>
-          <div class="col-sm-9">
-            <textarea class="form-control custom-txt-area" placeholder="Judul..." name="judul" id="judul" value="{{  $layanan->judul  }}" required>{{ $layanan->judul }}</textarea>
-          </div>
+    <form action="">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">
+                    <a class="pr-3 text-dark" href="#"
+                        ><i class="fa fa-arrow-left" aria-hidden="true"></i></a
+                    ><b>Edit Pelayanan</b>
+                </h4>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-dark btn-sm">
+                        Simpan
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-3 mb-2 bg-secondary text-white">
+                @csrf
+                <div class="d-flex justify-content-center m-4">
+                    <label for="file_input"
+                        ><i class="fa-solid fa-camera fa-2xl"></i></label
+                    ><input
+                        type="file"
+                        id="file_input"
+                        class="visually-hidden"
+                    />
+                </div>
+                <div class="mb-3 pb-4 row">
+                    <label class="col-sm-3 col-form-label"
+                        >Nama Pelayanan :
+                    </label>
+                    <div class="col-sm-9">
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="nama-layanan"
+                            id="nama-layanan"
+                            value="Premium Deep Clean"
+                            required
+                        />
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Deskripsi</label>
-          <div class="col-sm-9">
-            <textarea class="form-control custom-txt-area" placeholder="Deskripsi" name="deskripsi" id="deskripsi" value="{{  $layanan->deskripsi  }}" required>{{ $layanan->deskripsi }}</textarea>
-          </div>
-        </div>
-        <div class="mb-3 row">
-          <div class="col-sm-9">
-            <button type="submit" class="btn btn-primary ">Simpan</button>
-          </div>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!--./Edit layanan-->
+    </form>
+</div>
+<!--./edit layanan-->
 
 @endsection
-

@@ -16,10 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('layanan_id')->nullable();
             $table->foreign('layanan_id')->references('id')->on('layanan');
             $table->string('nama_sub');
-            $table->string('desc_sub');
-            $table->integer('est_sub');
+            $table->string('deskripsi_sub');
+            $table->integer('waktu_sub');
             $table->integer('harga_sub');
-            $table->string('jenis_barang');
             $table->timestamps();
         });
     }
