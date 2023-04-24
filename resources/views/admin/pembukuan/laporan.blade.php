@@ -8,7 +8,6 @@
 <div class="col-lg-12 form-wrapper" id="pemasukan">
   <form action="">
     <div class="container">
-        
         <div class="card">
               <div class="card-header">
                 <h3 class="card-title">
@@ -158,7 +157,7 @@
               </div>
               <!-- /.card-body -->
             </div>
-
+            @include('admin.menu')
     </div>
   </form>
 </div>

@@ -23,7 +23,7 @@ class AdminLayananController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.layanan.create');
     }
 
     /**
@@ -31,7 +31,17 @@ class AdminLayananController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Layanan::create([
+            'ikon_layanan' => $request->ikon_layanan,
+            'nama_layanan' => $request->nama_layanan,
+            'deskripsi_layanan' => $request->deskripsi_layanan
+        ]);
+
+        if (auth()->user()->roles_id == 1) {
+            return redirect('super/layanan')->with('sukses', 'Berhasil Tambah Data!');
+        } elseif (auth()->user()->roles_id == 2) {
+            return redirect('admin/layanan')->with('sukses', 'Berhasil Tambah Data!');
+        }
     }
 
     /**
@@ -39,7 +49,8 @@ class AdminLayananController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $layanan = SubLayanan::where('id', $id)->first();
+        return view('admin.sublayanan.index', compact('layanan'));
     }
 
     /**
@@ -47,7 +58,8 @@ class AdminLayananController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $layanan = Layanan::where('id', $id)->first();
+        return view('admin.layanan.update', compact('layanan'));
     }
 
     /**
@@ -55,7 +67,19 @@ class AdminLayananController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $layanan = Layanan::where('id', $id)->first();
+        $layanan->update(
+            [
+                'ikon_layanan' => $request->ikon_layanan,
+                'nama_layanan' => $request->nama_layanan,
+                'deskripsi_layanan' => $request->deskripsi_layanan
+            ]
+        );
+        if (auth()->user()->roles_id == 1) {
+            return redirect('super/layanan')->with('sukses', 'Berhasil Edit Data!');
+        } elseif (auth()->user()->roles_id == 2) {
+            return redirect('admin/layanan')->with('sukses', 'Berhasil Edit Data!');
+        }
     }
 
     /**
@@ -63,6 +87,13 @@ class AdminLayananController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = Layanan::where('id', $id)->first();
+        $data->delete();
+
+        if (auth()->user()->roles_id == 1) {
+            return redirect('super/layanan')->with('sukses', 'Berhasil Hapus Data!');
+        } elseif (auth()->user()->roles_id == 2) {
+            return redirect('admin/layanan')->with('sukses', 'Berhasil Hapus Data!');
+        }
     }
 }

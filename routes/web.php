@@ -6,9 +6,11 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Middleware\SuperAdmin;
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\Client;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminLayananController;
 use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminSubLayananController;
+use App\Http\Controllers\Admin\AdminTransaksiController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Client\ClientLayananController;
 use App\Http\Controllers\Client\ClientOrderController;
@@ -34,7 +36,11 @@ Route::middleware([SuperAdmin::class])->name('super.')->prefix('super')->group(f
     Route::resource('layanan', AdminLayananController::class);
     Route::resource('order', AdminOrderController::class);
     Route::resource('sublayanan', AdminSubLayananController::class);
+    Route::resource('transaksi', AdminTransaksiController::class);
     Route::resource('user', AdminUserController::class);
+    Route::resource('profile', UserProfileController::class);
+    Route::get('laporan', [AdminTransaksiController::class, 'indexLaporan']);
+    Route::get('chart', [AdminTransaksiController::class, 'indexChart']);
   });
 
 // CMS ADMIN
@@ -43,6 +49,16 @@ Route::middleware([Admin::class])->name('admin.')->prefix('admin')->group(functi
     Route::resource('layanan', AdminLayananController::class);
     Route::resource('order', AdminOrderController::class);
     Route::resource('sublayanan', AdminSubLayananController::class);
+    Route::resource('transaksi', AdminTransaksiController::class);
+    Route::resource('profile', UserProfileController::class);
+    Route::get('laporan', [AdminTransaksiController::class, 'indexLaporan']);
+    Route::get('chart', [AdminTransaksiController::class, 'indexChart']);
+  });
+
+// MEMBER
+Route::middleware([Admin::class])->name('admin.')->prefix('admin')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::resource('profile', UserProfileController::class);
   });
 
 // CLIENT
@@ -54,17 +70,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/order', [ClientOrderController::class, 'index'])->name('order');
     Route::get('/sublayanan', [ClientSubLayananController::class, 'index'])->name('sublayanan');
   
-    // PROFILE
-    Route::get('/profile', [UserProfileController::class, 'index'])->name('profile');
-    Route::get('/edit-profile', [UserProfileController::class, 'editProfile'])->name('edit-profile');
-    Route::get('edit-fotoProfile/{id}', [UserProfileController::class, 'editProfile']);
-    Route::put('update-fotoProfile/{id}', [UserProfileController::class, 'updateProfile']);
-    Route::get('edit-profile/{id}', [UserProfileController::class, 'editProfile']);
-    Route::put('update-profile/{id}', [UserProfileController::class, 'updateProfile']);
-  
   });
   
-
-Route::get('/', function () {
-    return view('admin.pembukuan.laporan');
+Route::get('/transaksi', function () {
+    return view('client.transaksi.index');
 });

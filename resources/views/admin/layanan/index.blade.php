@@ -9,33 +9,49 @@
     <div class="container">
         <h4 class="card-title mb-4"><b>Service Pelayanan</b></h4>
         <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-dark btn-sm mb-4">
-                Tambah
-            </button>
+            @if(auth()->user()->roles_id == 1)
+                <a href="{{ route('super.layanan.create') }}" class="btn btn-dark btn-sm mb-4">Tambah</a>
+            @elseif(auth()->user()->roles_id == 2)
+                <a href="{{ route('admin.layanan.create') }}" class="btn btn-dark btn-sm mb-4">Tambah</a>
+            @endif
         </div>
+        @foreach ($layanans as $layanan)
         <div class="row mb-3">
-            <div
-                class="col-2 bg-secondary text-white d-flex align-items-center rounded-start"
-            >
-                <img
-                    src="assets/img/splash1.png"
-                    alt=""
-                    height="40"
-                    width="40"
-                />
-            </div>
-            <div
-                class="col-5 bg-secondary text-white d-flex align-items-center text-center rounded-end"
-            >
-                <b>Premium Deep Clean</b>
-            </div>
+            @if(auth()->user()->roles_id == 1)
+                <a href="{{ route('super.sublayanan.index') }}" class="col-2 bg-secondary text-white d-flex align-items-center rounded-start">
+                    @if ($layanan->ikon_layanan == Null)
+                        <img src="{{ asset('assets/ikon') }}/default.png" alt="ikon" height="40" width="40"/>
+                    @else
+                        <img src="{{ asset('assets/ikon') }}/{{ $layanan->ikon_layanan }}" alt="ikon" height="40" width="40"/>
+                    @endif
+                </a>
+                <a href="{{ route('super.sublayanan.index') }}" class="col-5 bg-secondary text-white d-flex align-items-center text-center rounded-end">
+                    <b>{{ $layanan->nama_layanan }}</b>
+                </a>
+            @elseif(auth()->user()->roles_id == 2)
+                <a href="{{ route('admin.sublayanan.index') }}" class="col-2 bg-secondary text-white d-flex align-items-center rounded-start">
+                    @if ($layanan->ikon_layanan == Null)
+                        <img src="{{ asset('assets/ikon') }}/default.png" alt="ikon" height="40" width="40"/>
+                    @else
+                        <img src="{{ asset('assets/ikon') }}/{{ $layanan->ikon_layanan }}" alt="ikon" height="40" width="40"/>
+                    @endif
+                </a>
+                <a href="{{ route('admin.sublayanan.index') }}" class="col-5 bg-secondary text-white d-flex align-items-center text-center rounded-end">
+                    <b>{{ $layanan->nama_layanan }}</b>
+                </a>
+            @endif
             <div class="col-5 text-right">
-                <button
-                    type="submit"
-                    class="btn btn-dark btn-sm mb-3 ml-1 mt-1 p-1"
-                >
-                    Edit
-                </button>
+                @if(auth()->user()->roles_id == 1)
+                    <a href="{{ route('super.layanan.edit',$layanan->id) }}">
+                @elseif(auth()->user()->roles_id == 2)
+                    <a href="{{ route('admin.layanan.edit',$layanan->id) }}">
+                @endif
+                    <button 
+                        class="btn btn-dark btn-sm mb-3 ml-1 mt-1 p-1"
+                    >
+                        Edit
+                    </button>
+                </a>
                 <button
                     type="submit"
                     class="btn btn-dark btn-sm mb-3 ml-1 mt-1 p-1"
@@ -44,39 +60,10 @@
                 </button>
             </div>
         </div>
-        <div class="row mb-3">
-            <div
-                class="col-2 bg-secondary text-white d-flex align-items-center rounded-start"
-            >
-                <img
-                    src="assets/img/splash1.png"
-                    alt=""
-                    height="40"
-                    width="40"
-                />
-            </div>
-            <div
-                class="col-5 bg-secondary text-white d-flex align-items-center text-center rounded-end"
-            >
-                <b>Premium Deep Clean</b>
-            </div>
-            <div class="col-5 text-right">
-                <button
-                    type="submit"
-                    class="btn btn-dark btn-sm mb-3 ml-1 mt-1 p-1"
-                >
-                    Edit
-                </button>
-                <button
-                    type="submit"
-                    class="btn btn-dark btn-sm mb-3 ml-1 mt-1 p-1"
-                >
-                    Hapus
-                </button>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
+@include('menu')
 <!--./Layanan-->
 
 @endsection

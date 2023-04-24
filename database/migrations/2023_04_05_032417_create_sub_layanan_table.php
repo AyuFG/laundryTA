@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('deskripsi_sub');
             $table->integer('waktu_sub');
             $table->integer('harga_sub');
+            $table->string('barang_sub');
             $table->timestamps();
         });
     }

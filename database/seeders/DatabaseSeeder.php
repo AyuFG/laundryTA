@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Test User',
             'email' => 'test@example.com',
             'roles_id' => 1,
-            'no_telpon' => '081234567890',
+            'no_telepon' => '081234567890',
         ]);
     }
 }

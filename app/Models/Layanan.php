@@ -10,12 +10,9 @@ class Layanan extends Model
     use HasFactory;
     protected $table = 'layanan';
     protected $fillable = [
-        'icon_layanan',
+        'ikon_layanan',
         'nama_layanan',
-        'jenis_layanan',
-        'deskripsi',
-        'estimasi',
-        'harga',
+        'deskripsi_layanan'
     ];
 
     public function sublayanan()

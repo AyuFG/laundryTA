@@ -1,18 +1,26 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Tambah Sub Layanan')
+@section('title', 'Tambah Sublayanan')
 
 @section('content')
 
 <!--tambah sublayanan-->
 <div class="col-lg-12 col-lg-12 form-wrapper" id="tambah-sublayanan">
-    <form action="">
+    @if(auth()->user()->roles_id == 1)
+        <form method="POST" action="{{ route('super.sublayanan.store') }}" enctype='multipart/form-data'>
+    @elseif(auth()->user()->roles_id == 2)
+        <form method="POST" action="{{ route('admin.sublayanan.store') }}" enctype='multipart/form-data'>
+    @endif
+    @csrf
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">
-                    <a class="pr-3 text-dark" href="#"
-                        ><i class="fa fa-arrow-left" aria-hidden="true"></i></a
-                    ><b>Tambah Jenis Pelayanan</b>
+                    @if(auth()->user()->roles_id == 1)
+                        <a class="pr-3 text-dark" href="{{ route('super.sublayanan.index') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                    @elseif(auth()->user()->roles_id == 2)
+                        <a class="pr-3 text-dark" href="{{ route('admin.sublayanan.index') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                    @endif
+                    <b>Tambah Jenis Pelayanan</b>
                 </h4>
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-dark btn-sm">
@@ -23,11 +31,11 @@
             <div class="card-body p-3 mb-2 bg-secondary text-white">
                 @csrf
                 <div class="d-flex justify-content-center m-4">
-                    <label for="file_input"
+                    <label for="ikon_sub"
                         ><i class="fa-solid fa-camera fa-2xl"></i></label
                     ><input
                         type="file"
-                        id="file_input"
+                        id="ikon_sub"
                         class="visually-hidden"
                     />
                 </div>
@@ -39,8 +47,8 @@
                         <input
                             type="text"
                             class="form-control"
-                            name="nama-sublayanan"
-                            id="nama-sublayanan"
+                            name="nama_sub"
+                            id="nama_sub"
                             required
                         />
                     </div>
@@ -50,9 +58,10 @@
                     <div class="col-sm-9">
                         <textarea
                             class="form-control"
-                            name="deskripsi-sublayanan"
-                            id="deskripsi-sublayanan"
-                            required cols="30" rows="10"></textarea>
+                            name="deskripsi_sub"
+                            id="deskripsi_sub"
+                            required cols="30" rows="10">
+                        </textarea>
                     </div>
                 </div>
                 <div class="mb-2 pb-2 row">
@@ -63,8 +72,8 @@
                         <input
                             type="text"
                             class="form-control"
-                            name="waktu-sublayanan"
-                            id="waktu-sublayanan"
+                            name="waktu_sub"
+                            id="waktu_sub"
                             required
                         />
                     </div>
@@ -75,8 +84,8 @@
                         <input
                             type="text"
                             class="form-control"
-                            name="harga-sublayanan"
-                            id="harga-sublayanan"
+                            name="harga_sub"
+                            id="harga_sub"
                             required
                         />
                     </div>
