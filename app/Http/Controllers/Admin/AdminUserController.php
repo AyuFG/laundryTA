@@ -78,6 +78,9 @@ class AdminUserController extends Controller
                 'roles_id' => $request->roles_id
             ]
         );
+        if (auth()->user()->roles_id == 1) {
+            return redirect('super/user')->with('sukses', 'Berhasil Edit Data!');
+        }
     }
 
     /**
@@ -87,5 +90,9 @@ class AdminUserController extends Controller
     {
         $data = User::where('id', $id)->first();
         $data->delete();
+
+        if (auth()->user()->roles_id == 1) {
+            return redirect('super/user')->with('sukses', 'Berhasil Hapus Data!');
+        }
     }
 }

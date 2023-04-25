@@ -102,5 +102,11 @@ class AdminTransaksiController extends Controller
     {
         $data = Transaksi::where('id', $id)->first();
         $data->delete();
+
+        if (auth()->user()->roles_id == 1) {
+            return redirect('super/sublayanan')->with('sukses', 'Berhasil Edit Data!');
+        } elseif (auth()->user()->roles_id == 2) {
+            return redirect('admin/sublayanan')->with('sukses', 'Berhasil Edit Data!');
+        }
     }
 }

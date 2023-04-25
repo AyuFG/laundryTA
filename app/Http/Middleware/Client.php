@@ -16,10 +16,5 @@ class Client
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && auth()->user()->roles_id == 3) {
-            return $next($request);
-        } else {
-            return redirect('login');
-        }
     }
 }
