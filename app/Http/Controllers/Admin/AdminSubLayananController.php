@@ -83,11 +83,6 @@ class AdminSubLayananController extends Controller
                 'harga_sub' => $request->harga_sub
             ]
         );
-        if (auth()->user()->roles_id == 1) {
-            return redirect('super/sublayanan')->with('sukses', 'Berhasil Edit Data!');
-        } elseif (auth()->user()->roles_id == 2) {
-            return redirect('admin/sublayanan')->with('sukses', 'Berhasil Edit Data!');
-        }
     }
 
     /**
