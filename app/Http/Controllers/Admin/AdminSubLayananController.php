@@ -35,11 +35,11 @@ class AdminSubLayananController extends Controller
     {
         SubLayanan::create([
             'layanan_id' => $request->layanan_id,
+            'ikon_sub' => $request->ikon_sub,
             'nama_sub' => $request->nama_sub,
             'deskripsi_sub' => $request->deskripsi_sub,
             'waktu_sub' => $request->waktu_sub,
-            'harga_sub' => $request->harga_sub,
-            'barang_sub' => $request->barang_sub
+            'harga_sub' => $request->harga_sub
         ]);
 
         if (auth()->user()->roles_id == 1) {
@@ -76,11 +76,11 @@ class AdminSubLayananController extends Controller
         $sublayanan->update(
             [
                 'layanan_id' => $request->layanan_id,
+                'ikon_sub' => $request->ikon_sub,
                 'nama_sub' => $request->nama_sub,
                 'deskripsi_sub' => $request->deskripsi_sub,
                 'waktu_sub' => $request->waktu_sub,
-                'harga_sub' => $request->harga_sub,
-                'barang_sub' => $request->barang_sub
+                'harga_sub' => $request->harga_sub
             ]
         );
         if (auth()->user()->roles_id == 1) {

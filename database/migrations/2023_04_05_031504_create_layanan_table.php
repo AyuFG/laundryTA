@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('ikon_layanan');
             $table->string('nama_layanan');
-            $table->string('deskripsi_layanan');
+            $table->text('deskripsi_layanan');
             $table->timestamps();
         });
     }

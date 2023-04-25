@@ -60,7 +60,7 @@
                             class="form-control"
                             name="deskripsi_sub"
                             id="deskripsi_sub"
-                            required cols="30" rows="10">
+                            required>
                         </textarea>
                     </div>
                 </div>

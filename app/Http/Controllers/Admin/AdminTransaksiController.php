@@ -35,7 +35,8 @@ class AdminTransaksiController extends Controller
      */
     public function create()
     {
-        return view('admin.transaksi.create');
+        $transaksis = Transaksi::all();
+        return view('admin.transaksi.create', compact('transaksis'));
     }
 
     /**

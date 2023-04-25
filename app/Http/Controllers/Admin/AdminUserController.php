@@ -35,7 +35,6 @@ class AdminUserController extends Controller
         User::create([
             'nama' => $request->nama,
             'email' => $request->email,
-            'gambar_user' => $request->gambar_user,
             'no_telepon' => $request->no_telepon,
             'password' => Hash::make($request->password),
             'roles_id' => $request->roles_id
@@ -74,7 +73,6 @@ class AdminUserController extends Controller
             [
                 'nama' => $request->nama,
                 'email' => $request->email,
-                'gambar_user' => $request->gambar_user,
                 'no_telepon' => $request->no_telepon,
                 'password' => Hash::make($request->password),
                 'roles_id' => $request->roles_id

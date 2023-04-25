@@ -32,7 +32,7 @@
             <div class="card-body p-3 mb-2 bg-secondary text-white">
                 @csrf
                 <div class="d-flex justify-content-center m-4">
-                    <img src="assets/img/splash1.png" alt="" width="100">
+                    <img src="{{$sublayanan->ikon_sub}}" alt="" width="100">
                 </div>
                 <div class="mb-2 pb-2 row">
                     <label class="col-sm-3 col-form-label"
@@ -56,7 +56,7 @@
                             class="form-control"
                             name="deskripsi_sub"
                             id="deskripsi_sub"
-                            required disabled cols="30" rows="10">{{$sublayanan->deskripsi_sub}}</textarea>
+                            required disabled>{{$sublayanan->deskripsi_sub}}</textarea>
                     </div>
                 </div>
                 <div class="mb-2 pb-2 row">

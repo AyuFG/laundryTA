@@ -46,20 +46,6 @@
                             </div>
                         <div class="d-flex justify-content-center gap-3 align-items-center flex-column">
                             <img src="../assets/img/main-logo.png" style="width: 20rem;" alt="">
-                            <div class="d-flex justify-content-center @error('gambar_user') is-invalid @enderror">
-                                <label for="file_input"
-                                    ><i class="fa-solid fa-camera fa-2xl" style="cursor: pointer;"></i></label
-                                ><input
-                                    type="file"
-                                    id="file_input"
-                                    class="visually-hidden"
-                                />
-                                @error('gambar_user')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
                             <div class="d-flex flex-column gap-3 justify-content-center align-items-center w-100">
                                 <input class="border-0 rounded-3 py-2 px-3 w-75  @error('email') is-invalid @enderror" type="email" name="email" placeholder="Email" required>
                                 @error('email')

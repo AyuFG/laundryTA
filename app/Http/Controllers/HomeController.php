@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Layanan;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 
@@ -24,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = User::where( 'id', auth()->user()->id )->firstOrFail();
+        $layanans = Layanan::all();
+        return view('home', compact('user', 'layanans'));
     }
 }

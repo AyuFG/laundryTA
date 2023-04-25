@@ -56,7 +56,7 @@ Route::middleware([Admin::class])->name('admin.')->prefix('admin')->group(functi
   });
 
 // MEMBER
-Route::middleware([Admin::class])->name('admin.')->prefix('admin')->group(function () {
+Route::middleware([Client::class])->name('member.')->prefix('member')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::resource('profile', UserProfileController::class);
   });
@@ -71,7 +71,3 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/sublayanan', [ClientSubLayananController::class, 'index'])->name('sublayanan');
   
   });
-  
-Route::get('/transaksi', function () {
-    return view('client.transaksi.index');
-});

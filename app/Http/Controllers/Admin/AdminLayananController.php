@@ -39,8 +39,6 @@ class AdminLayananController extends Controller
 
         if (auth()->user()->roles_id == 1) {
             return redirect('super/layanan')->with('sukses', 'Berhasil Tambah Data!');
-        } elseif (auth()->user()->roles_id == 2) {
-            return redirect('admin/layanan')->with('sukses', 'Berhasil Tambah Data!');
         }
     }
 
@@ -77,8 +75,6 @@ class AdminLayananController extends Controller
         );
         if (auth()->user()->roles_id == 1) {
             return redirect('super/layanan')->with('sukses', 'Berhasil Edit Data!');
-        } elseif (auth()->user()->roles_id == 2) {
-            return redirect('admin/layanan')->with('sukses', 'Berhasil Edit Data!');
         }
     }
 
@@ -92,8 +88,6 @@ class AdminLayananController extends Controller
 
         if (auth()->user()->roles_id == 1) {
             return redirect('super/layanan')->with('sukses', 'Berhasil Hapus Data!');
-        } elseif (auth()->user()->roles_id == 2) {
-            return redirect('admin/layanan')->with('sukses', 'Berhasil Hapus Data!');
         }
     }
 }

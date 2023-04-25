@@ -30,11 +30,11 @@
             <div class="card-body p-3 mb-2 bg-secondary text-white">
                 @csrf
                 <div class="d-flex justify-content-center m-4">
-                    <label for="file_input"
+                    <label for="ikon_sub"
                         ><i class="fa-solid fa-camera fa-2xl"></i></label
                     ><input
                         type="file"
-                        id="file_input"
+                        id="ikon_sub"
                         class="visually-hidden"
                     />
                 </div>
@@ -60,7 +60,7 @@
                             class="form-control"
                             name="deskripsi_sub"
                             id="deskripsi_sub"
-                            enabled cols="30" rows="10">{{$sublayanan->deskripsi_sub}}</textarea>
+                            enabled>{{$sublayanan->deskripsi_sub}}</textarea>
                     </div>
                 </div>
                 <div class="mb-2 pb-2 row">

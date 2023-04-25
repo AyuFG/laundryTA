@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('list_id')->nullable();
             $table->foreign('list_id')->references('id')->on('list_order');
-            $table->string('keluhan');
-            $table->string('foto_keluhan');
-            $table->integer('opsi_pengiriman');
-            $table->string('pembayaran');
-            $table->string('foto_pembayaran');
+            $table->text('keluhan')->nullable();
+            $table->string('foto_keluhan')->nullable();
+            $table->integer('opsi_pengiriman')->nullable();
+            $table->string('pembayaran')->nullable();
+            $table->string('foto_pembayaran')->nullable();
+            $table->string('no_rekening')->nullable();
             $table->string('status_order');
             $table->timestamps();
         });

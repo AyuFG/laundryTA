@@ -10,12 +10,14 @@ class ListOrder extends Model
     use HasFactory;
     protected $table = 'list_order';
     protected $fillable = [
-        'id_users',
-        'no_order',
-        'nama_users',
-        'waktu_order',
-        'alamat',
+        'user_id',
+        'token',
+        'user_order',
         'jenis_pelayanan',
-        'harga',
+        'jenis_barang',
+        'jenis_transaksi',
+        'waktu_order',
+        'alamat_order',
+        'harga_order',
     ];
 }

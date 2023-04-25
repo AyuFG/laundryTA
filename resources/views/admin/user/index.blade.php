@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="col-lg-12 form-wrapper" id="kelola-user">
+<div class="col-lg-12 form-wrapper pb-5" id="kelola-user">
   <form action="">
     <div class="container">
         <div class="card">
