@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Deskripsi Sublyanan')
+@section('title', 'Deskripsi Sublayanan')
 
 @section('content')
 
@@ -8,23 +8,32 @@
 <div class="col-lg-12 col-lg-12 form-wrapper" id="detail-sublayanan">
     <form action="">
         <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">
+            <div class="d-flex px-3 py-3 flex-row justify-content-between align-items-center">
+                <div>
                     @if(auth()->user()->roles_id == 1)
-                        <a class="pr-3 text-dark" href="{{ route('super.sublayanan.index') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                        <div>
+                            <a href="{{ route('super.layanan.show',$layanan->id) }}" class="bg-opacity-10 btn" style="font-size: 1.2rem;">
+                                <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
+                                <span class="font-weight-bolder px-2">Detail Jenis Pelayanan</span>
+                            </a>
+                        </div>
                     @elseif(auth()->user()->roles_id == 2)
-                        <a class="pr-3 text-dark" href="{{ route('admin.sublayanan.index') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                        <div>
+                            <a href="{{ route('admin.layanan.show',$layanan->id) }}" class="bg-opacity-10 btn" style="font-size: 1.2rem;">
+                                <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
+                                <span class="font-weight-bolder px-2">Detail Jenis Pelayanan</span>
+                            </a>
+                        </div>
                     @endif
-                    <b>Detail Jenis Pelayanan</b>
-                </h4>
-                <div class="d-flex justify-content-end">
+                </div>
+                <div>
                     @if(auth()->user()->roles_id == 1)
-                        <a href="{{ route('super.sublayanan.edit',$sublayanan->id) }}" class="btn btn-dark btn-sm ml-1 mt-1">
-                            Edit
+                        <a href="{{ route('super.sublayanan.edit',$sublayanan->id) }}" class="text-decoration-none">
+                            <button class="btn btn-dark">Simpan</button>
                         </a>
-                    @elseif(auth()->user()->roles_id == 2)
-                        <a href="{{ route('admin.sublayanan.edit',$sublayanan->id) }}" class="btn btn-dark btn-sm ml-1 mt-1">
-                            Edit
+                        @elseif(auth()->user()->roles_id == 2)
+                        <a href="{{ route('admin.sublayanan.edit',$sublayanan->id) }}" class="text-decoration-none">
+                            <button class="btn btn-dark">Simpan</button>
                         </a>
                     @endif
                 </div>
@@ -32,7 +41,10 @@
             <div class="card-body p-3 mb-2 bg-secondary text-white">
                 @csrf
                 <div class="d-flex justify-content-center m-4">
-                    <img src="{{$sublayanan->ikon_sub}}" alt="" width="100">
+                    <label for="ikon_sub">
+                        <img src="{{ asset('assets/ikon') }}/{{ $sublayanan->ikon_sub }}" style="width:200px !important; height:200px !important;" class="img-circle elevation-2" alt="">
+                        <input type="file" class="visually-hidden" placeholder="ikon_sub" name="ikon_sub" id="ikon_sub" disabled>
+                    </label>
                 </div>
                 <div class="mb-2 pb-2 row">
                     <label class="col-sm-3 col-form-label"

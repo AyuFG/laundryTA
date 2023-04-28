@@ -20,12 +20,27 @@
             <div class="card-body p-3 mb-2 bg-secondary text-white">
                 <div class="mb-2 pb-2 row">
                     <label class="col-sm-3 col-form-label"
+                        >Nama :
+                    </label>
+                    <div class="col-sm-9">
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="user_order"
+                            id="user_order"
+                            placeholder="nama"
+                            required enabled
+                        />
+                    </div>
+                </div>
+                <div class="mb-2 pb-2 row">
+                    <label class="col-sm-3 col-form-label"
                         >Jenis Transaksi :
                     </label>
                     <div class="col-sm-9">
                         <select class="col-sm-12 col-form-label rounded-2" name="jenis_transaksi" id="jenis_transaksi" value="" required enabled>
-                          <option value="1">Pemasukan</option>
-                          <option value="2">Pengeluaran</option>
+                            <option value="pemasukan">Pemasukan</option>
+                            <option value="pengeluaran">Pengeluaran</option>
                         </select>
                       </div>
                 </div>
@@ -37,21 +52,10 @@
                         <input
                             type="date"
                             class="form-control"
-                            name="tanggal_transaksi"
-                            id="tanggal_transaksi"
+                            name="waktu_order"
+                            id="waktu_order"
                             required enabled
                         />
-                    </div>
-                </div>
-                <div class="mb-2 pb-2 row">
-                    <label class="col-sm-3 col-form-label">Deskripsi : </label>
-                    <div class="col-sm-9">
-                        <input
-                            class="form-control"
-                            name="deskripsi_transaksi"
-                            id="deskripsi_transaksi"
-                            placeholder="Deskripsi..."
-                            required enabled cols="10" rows="10">
                     </div>
                 </div>
                 <div class="mb-2 pb-2 row">
@@ -60,8 +64,8 @@
                         <input
                             type="text"
                             class="form-control"
-                            name="total_transaksi"
-                            id="total_transaksi"
+                            name="harga_order"
+                            id="harga_order"
                             placeholder="10000"
                             required enabled
                         />

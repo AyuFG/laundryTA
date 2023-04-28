@@ -8,7 +8,6 @@ use App\Http\Middleware\Admin;
 use App\Http\Middleware\Client;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminLayananController;
-use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminSubLayananController;
 use App\Http\Controllers\Admin\AdminTransaksiController;
 use App\Http\Controllers\Admin\AdminUserController;
@@ -29,14 +28,14 @@ use App\Http\Controllers\UserProfileController;
 */
 
 Auth::routes();
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // CMS SUPER ADMIN
 Route::middleware([SuperAdmin::class])->name('super.')->prefix('super')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::resource('layanan', AdminLayananController::class);
-    Route::resource('order', AdminOrderController::class);
-    Route::resource('sublayanan', AdminSubLayananController::class);
     Route::resource('transaksi', AdminTransaksiController::class);
+    Route::resource('sublayanan', AdminSubLayananController::class);
     Route::resource('user', AdminUserController::class);
     Route::resource('profile', UserProfileController::class);
     Route::get('laporan', [AdminTransaksiController::class, 'indexLaporan']);
@@ -47,9 +46,8 @@ Route::middleware([SuperAdmin::class])->name('super.')->prefix('super')->group(f
 Route::middleware([Admin::class])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::resource('layanan', AdminLayananController::class);
-    Route::resource('order', AdminOrderController::class);
-    Route::resource('sublayanan', AdminSubLayananController::class);
     Route::resource('transaksi', AdminTransaksiController::class);
+    Route::resource('sublayanan', AdminSubLayananController::class);
     Route::resource('profile', UserProfileController::class);
     Route::get('laporan', [AdminTransaksiController::class, 'indexLaporan']);
     Route::get('chart', [AdminTransaksiController::class, 'indexChart']);
@@ -58,16 +56,16 @@ Route::middleware([Admin::class])->name('admin.')->prefix('admin')->group(functi
 // MEMBER
 Route::middleware([Client::class])->name('member.')->prefix('member')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::resource('m-layanan', ClientLayananController::class);
+    Route::resource('m-order', ClientOrderController::class);
+    Route::resource('m-sublayanan', ClientSubLayananController::class);
     Route::resource('profile', UserProfileController::class);
   });
 
-// CLIENT
 Route::middleware(['auth'])->group(function () {
-
-    // UTAMA
     Route::get('/', [HomeController::class, 'index']);
-    Route::get('/layanan', [ClientLayananController::class, 'index'])->name('layanan');
-    Route::get('/order', [ClientOrderController::class, 'index'])->name('order');
-    Route::get('/sublayanan', [ClientSubLayananController::class, 'index'])->name('sublayanan');
-  
+  });
+
+  Route::get('/verifikasi', function () {
+    return view('auth.verify');
   });

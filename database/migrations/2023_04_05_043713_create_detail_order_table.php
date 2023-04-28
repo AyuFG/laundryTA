@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('pembayaran')->nullable();
             $table->string('foto_pembayaran')->nullable();
             $table->string('no_rekening')->nullable();
-            $table->string('status_order');
+            $table->string('status_order')->nullable();
             $table->timestamps();
         });
     }

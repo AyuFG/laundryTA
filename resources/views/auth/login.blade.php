@@ -29,7 +29,7 @@
                 <p class="col text-white font-weight-bolder text-center">OR</p>
                 <hr class="col" style="background-color: #E2DFEB; color: #fff; height: 3px;">
             </div>
-            <a class="btn w-25" style="background-color: #D6C37E;" href="">
+            <a class="btn w-25" style="background-color: #D6C37E;" href="{{route('register')}}">
                 Daftar
             </a>
         </div>

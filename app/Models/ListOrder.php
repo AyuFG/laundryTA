@@ -14,10 +14,9 @@ class ListOrder extends Model
         'token',
         'user_order',
         'jenis_pelayanan',
-        'jenis_barang',
         'jenis_transaksi',
         'waktu_order',
         'alamat_order',
-        'harga_order',
+        'harga_order'
     ];
 }

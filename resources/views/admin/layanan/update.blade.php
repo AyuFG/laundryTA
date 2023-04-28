@@ -28,18 +28,15 @@
             <div class="card-body p-3 mb-2 bg-secondary text-white">
                 @csrf
                 <div class="d-flex justify-content-center m-4">
-                    <label for="file-input">
+                    <label for="ikon_layanan" style="cursor: pointer">
                         @if ($layanan->ikon_layanan == Null)
                             <i class="fa-solid fa-camera fa-2xl"></i>
+                            <input type="file" class="visually-hidden" placeholder="ikon_layanan" name="ikon_layanan" id="ikon_layanan" enabled>
                         @else
-                            <img src="{{ asset('assets/ikon') }}/{{ $layanan->ikon_layanan }}" alt="ikon" height="40" width="40"/>
+                            <img src="{{ asset('assets/ikon') }}/{{ $layanan->ikon_layanan }}" style="width:200px !important; height:200px !important;" class="img-circle elevation-2" alt="">
+                            <input type="file" class="visually-hidden" placeholder="ikon_layanan" name="ikon_layanan" id="ikon_layanan" enabled>
                         @endif
                     </label>
-                    <input
-                        type="file"
-                        id="file-input"
-                        class="visually-hidden"
-                    />
                 </div>
                 <div class="mb-3 pb-4 row">
                     <label class="col-sm-3 col-form-label"

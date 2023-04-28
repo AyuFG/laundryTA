@@ -26,11 +26,24 @@ class UserProfileController extends Controller
             [
                 'nama' => $request->nama,
                 'email' => $request->email,
-                'gambar_user' => $request->gambar_user,
                 'no_telepon' => $request->no_telepon,
                 'password' => Hash::make($request->password)
             ]
         );
+
+        $validasi = $request->validate([
+            'gambar_user' => 'required|mimes:jpg,bmp,png,svg,jpeg|max:2560 ',
+        ]);
+
+        $file = $validasi[('gambar_user')];
+        $user->gambar_user = time().'_'.$file->getClientOriginalName();
+        $user->update();
+        $nama_file = time().'_'.$file->getClientOriginalName();
+
+        $location = '../public/assets/profile/';
+
+        $file->move($location,$nama_file);
+
         if (auth()->user()->roles_id == 1) {
             return redirect('super/profile/'.$id.'/edit')->with('sukses', 'Berhasil Edit Data!');
         } else if (auth()->user()->roles_id == 2) {

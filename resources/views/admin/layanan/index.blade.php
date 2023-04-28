@@ -5,47 +5,89 @@
 @section('content')
 
 <!--Layanan-->
-<div class="col-lg-12 form-wrapper" id="layanan">
-    <div class="container">
-        <h4 class="card-title mb-4"><b>Service Pelayanan</b></h4>
-        <div class="d-flex justify-content-end">
-            @if(auth()->user()->roles_id == 1)
-                <a href="{{ route('super.layanan.create') }}" class="btn btn-dark btn-sm mb-4">Tambah</a>
-            @endif
-        </div>
-        @foreach ($layanans as $layanan)
-        <div class="row mb-3">
-            @if(auth()->user()->roles_id == 1)
-                <a href="{{ route('super.sublayanan.index') }}" class="col-2 bg-secondary text-white d-flex align-items-center rounded-start">
-                    @if ($layanan->ikon_layanan == Null)
-                        <img src="{{ asset('assets/ikon') }}/default.png" alt="ikon" height="40" width="40"/>
-                    @else
-                        <img src="{{ asset('assets/ikon') }}/{{ $layanan->ikon_layanan }}" alt="ikon" height="40" width="40"/>
-                    @endif
-                </a>
-                <a href="{{ route('super.sublayanan.index') }}" class="col-5 bg-secondary text-white d-flex align-items-center text-center rounded-end">
-                    <b>{{ $layanan->nama_layanan }}</b>
-                </a>
-            @endif
-            <div class="col-5 text-right">
+<div class="" id="layanan">
+    <div class="">
+        <div class="d-flex px-3 py-3 flex-row justify-content-between align-items-center">
+            <div class="bg-opacity-10" style="font-size: 1.2rem;">
+                <span class="font-weight-bolder px-2">Detail Jenis Pelayanan</span>
+            </div>
+            <div class="d-flex">
                 @if(auth()->user()->roles_id == 1)
-                    <a href="{{ route('super.layanan.edit',$layanan->id) }}">
+                <div class="d-flex justify-content-end">
+                        <a href="{{ route('super.layanan.create') }}" class="btn">
+                            <button type="submit" class="btn btn-dark btn-sm">
+                                Tambah
+                            </button>
+                        </a>
+                    </div>
                 @endif
-                    <button 
-                        class="btn btn-dark btn-sm mb-3 ml-1 mt-1 p-1"
-                    >
-                        Edit
-                    </button>
-                </a>
-                <button
-                    type="submit"
-                    class="btn btn-dark btn-sm mb-3 ml-1 mt-1 p-1"
-                >
-                    Hapus
-                </button>
             </div>
         </div>
-        @endforeach
+        <section class="body-section d-flex flex-column gap-3 py-3">
+            @foreach ($layanans as $layanan)
+            <div class="d-flex align-items-center justify-content-between">
+                @if(auth()->user()->roles_id == 1)
+                    <a href="{{ route('super.layanan.show',$layanan->id) }}" class="text-decoration-none bg-dark px-3 rounded-4 w-60 d-flex align-items-center" style="min-height: 45px; width: 400px;">
+                        <div class="d-flex align-items-center px-1">
+                            @if ($layanan->ikon_layanan == Null)
+                                <img src="{{ asset('assets/ikon') }}/default.png" style="width: 45px;" alt="ikon">
+                            @else
+                                <img src="{{ asset('assets/ikon') }}/{{ $layanan->ikon_layanan }}"  style="width: 45px;" alt="ikon"/>
+                            @endif
+                        </div>
+                        <div class="d-flex align-items-center w-100">
+                            <span class="fw-bolder text-sm px-1 text-white">{{ $layanan->nama_layanan }}</span>
+                        </div>
+                    </a>
+                @elseif(auth()->user()->roles_id == 2)
+                    <a href="{{ route('admin.layanan.show',$layanan->id) }}" class="text-decoration-none bg-dark px-3 rounded-4 w-60 d-flex align-items-center">
+                        <div class="d-flex align-items-center px-1">
+                            @if ($layanan->ikon_layanan == Null)
+                                <img src="{{ asset('assets/ikon') }}/default.png" style="width: 45px;" alt="ikon">
+                            @else
+                                <img src="{{ asset('assets/ikon') }}/{{ $layanan->ikon_layanan }}"  style="width: 45px;" alt="ikon"/>
+                            @endif
+                        </div>
+                        <div class="d-flex align-items-center w-100">
+                            <span class="fw-bolder text-sm px-1 text-white">{{ $layanan->nama_layanan }}</span>
+                        </div>
+                    </a>
+                @endif
+                <div class="d-flex gap-2">
+                    @if(auth()->user()->roles_id == 1)
+                        <a href="{{ route('super.layanan.edit',$layanan->id) }}">
+                        <button class="btn-sm btn-dark rounded-2">
+                            Edit
+                        </button>
+                    </a>
+                    <button type="submit" class="btn-sm btn-dark rounded-2" role="button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm{{$layanan->id}}">
+                        Hapus
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade bd-example-modal-sm{{$layanan->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog ">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"><strong>Hapus Layanan?</strong></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                    </button>
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{{route('super.layanan.destroy', $layanan->id)}}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <input type="submit" class="btn btn-dark light" name="" id="" value="Ya">
+                                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Tidak</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                </div>
+            </div>
+            @endforeach
+        </section>
     </div>
 </div>
 @include('menu')

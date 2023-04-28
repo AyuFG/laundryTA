@@ -27,18 +27,35 @@
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
   <script src="https://kit.fontawesome.com/2a99f4df77.js" crossorigin="anonymous"></script>
   @yield('style')
-</head>
 
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="{{asset('assets/ikon/apple-icon-57x57.png')}}">
+  <link rel="apple-touch-icon" sizes="60x60" href="{{asset('assets/ikon/apple-icon-60x60.png')}}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{asset('assets/ikon/apple-icon-72x72.png')}}">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/ikon/apple-icon-76x76.png')}}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{asset('assets/ikon/apple-icon-114x114.png')}}">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{asset('assets/ikon/apple-icon-120x120.png')}}">
+  <link rel="apple-touch-icon" sizes="144x144" href="{{asset('assets/ikon/apple-icon-144x144.png')}}">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{asset('assets/ikon/apple-icon-152x152.png')}}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/ikon/apple-icon-180x180.png')}}">
+  <link rel="icon" type="image/png" sizes="192x192"  href="{{asset('assets/ikon/android-icon-192x192.png')}}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets/ikon/favicon-32x32.png')}}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{asset('assets/ikon/favicon-96x96.png')}}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/ikon/favicon-16x16.png')}}">
+  <link rel="manifest" href="{{asset('assets/ikon/manifest.json')}}">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+</head>
+<body style="background-color: #AD48FA; color: #f1f1f1">
   <!-- Splash Screen -->
   <div class="preloader flex-row justify-content-center align-items-center">
     <img class="animation__shake" src="{{asset('assets/img/splash1.png')}}" alt="splash" height="100" width="100">
     <img class="animation__shake" src="{{asset('assets/img/splash2.png')}}" alt="splash" height="100" width="100">
   </div>
 
-  @yield('content')
-
-
-<!-- ./wrapper -->
+    @yield('content')
 
 <!-- jQuery -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
@@ -75,4 +92,6 @@
 {{-- script js bootstrap 5 --}}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 @yield('script')
+</body>
+  
 </html>
