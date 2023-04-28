@@ -25,7 +25,8 @@
             </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table-responsive table table-bordered bordered table-striped table-condensed datatable" ui-jq="dataTable" ui-options="dataTableOpt"">
+                <div class="table-responsive">
+                <table class="table table-bordered bordered table-striped table-condensed datatable" ui-jq="dataTable" ui-options="dataTableOpt"">
                   <thead>
                     <tr>
                       <th>No</th>
@@ -100,6 +101,7 @@
                     </tr>
                   </tfoot>
                 </table>
+              </div>
               </div>
               <!-- /.card-body -->
             </div>

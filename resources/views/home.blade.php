@@ -189,9 +189,9 @@
                 <a href="{{ route('member.m-layanan.show',$layanan->id) }}" class="d-flex align-items-center gap-4 bg-white ps-4 text-decoration-none font-weight-bolder text-black rounded-4">
             @endif
                     @if ($layanan->ikon_layanan == Null)
-                        <img src="{{ asset('assets/ikon/default.png') }}" alt="ikon" style="width: 4.2rem; height: 4.2rem;" alt="">
+                        <img src="{{ asset('assets/ikon/default.png') }}" alt="ikon" style="width: 4.2rem; height: 4.2rem;" class="p-1" alt="">
                     @else
-                        <img src="{{ asset("assets/ikon/{$layanan->ikon_layanan}") }}" alt="ikon" style="width: 4.2rem; height: 4.2rem;" alt="">
+                        <img src="{{ asset("assets/ikon/{$layanan->ikon_layanan}") }}" alt="ikon" style="width: 4.2rem; height: 4.2rem;" class="p-1" alt="">
                     @endif
                     <span>{{ $layanan->nama_layanan }}</span>
                 </a>
@@ -203,7 +203,7 @@
             @elseif(auth()->user()->roles_id == 3)
                 <a href="{{ route('member.m-layanan.index') }}" class="d-flex align-items-center gap-4 bg-white ps-4 text-decoration-none font-weight-bolder text-black rounded-4">
             @endif
-                    <img src="{{ asset('assets/img/clean-shoes.png')}}" style="width: 4.2rem; height: 4.2rem;" alt="">
+                    <img src="{{ asset('assets/img/clean-shoes.png')}}" style="width: 4.2rem; height: 4.2rem;" class="p-1" alt="">
                     <span>Other</span>
                 </a>
         </section>
