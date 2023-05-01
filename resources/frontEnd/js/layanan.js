@@ -7,14 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
         dismissModal()
     })
 
-    document.getElementById('desc-toggle').addEventListener('click', () => {
-        presentModal('modal1')
-    })
+    // document.getElementById('desc-toggle').addEventListener('click', () => {
+    //     presentModal('modal1')
+    // })
 
     document.getElementById('button-modal-quote-2').addEventListener('click', () => {
         presentModal('modal-quote-2')
     })
 })
+function openModal() {
+
+}
 
 function presentModal(id) {
     const modal = document.getElementById(id)

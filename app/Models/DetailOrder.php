@@ -11,12 +11,10 @@ class DetailOrder extends Model
     protected $table = 'detail_order';
     protected $fillable = [
         'list_id',
-        'keluhan',
         'foto_keluhan',
         'opsi_pengiriman',
         'pembayaran',
         'foto_pembayaran',
-        'no_rekening',
-        'status'
+        'no_rekening'
     ];
 }

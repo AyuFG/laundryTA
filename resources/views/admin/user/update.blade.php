@@ -7,9 +7,6 @@
 <!--Edit user-->
 <div class="col-lg-12 col-lg-12 form-wrapper" id="edit-user">
   <div class="card">
-  <div class="card-header">
-  <h4 class="card-title">Edit Data user</h4>
-  </div>
   <div class="card-body">
     @if(auth()->user()->roles_id == 1)
         <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">

@@ -4,102 +4,53 @@
 
 @section('content')
 
-  <div class="card-header py-4">
-      <h4 class="text-center">
-          <b>Pembukuan Usaha</b>
-      </h4>
-  </div>
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-          <div class="card">
-            <div class="card-body">
-              <div class="chart">
-                <canvas id="barChart" style="min-height: 450px; height: 450px; max-height: 650px; max-width: 100%;"></canvas>
-              </div>
-            </div>
-          </div>
-        <canvas id="areaChart" style="min-height: 450px; height: 450px; max-height: 650px; max-width: 100%;"></canvas>
-      </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div class="vh-100 d-flex justify-content-center align-items-center pb-5" style="width: 90%; height: 80%; margin: auto;">
+        <canvas id="pemasukan-pengeluaran"></canvas>
     </div>
-  </section>
+        <script>
+            var data = {!! json_encode($data) !!};
+            var labels = Object.keys(data);
+            var pemasukanData = [];
+            var pengeluaranData = [];
 
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="../../plugins/chart.js/Chart.min.js"></script>
-<!-- Page specific script -->
-<script>
-    $(function () {
-    /* ChartJS
-    * -------
-    * Here we will create a few charts using ChartJS
-    */
-
-    //--------------
-    //- AREA CHART -
-    //--------------
-
-    // Get context with jQuery - using jQuery's .get() method.
-    var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
-
-    var areaChartData = {
-        labels  : ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul'],
-        datasets: [
-        {
-            label               : 'Pengeluaran',
-            backgroundColor     : '#DD9797',
-            borderColor         : '#DD9797',
-            pointRadius          : false,
-            pointColor          : '#DD9797',
-            pointStrokeColor    : '#DD9797',
-            pointHighlightFill  : '#fff',
-            pointHighlightStroke: '#DD9797',
-            data                : [28, 48, 40, 19, 86, 27, 90]
-        },
-        {
-            label               : 'Pemasukan',
-            backgroundColor     : '#58AFAA',
-            borderColor         : '#58AFAA',
-            pointRadius         : false,
-            pointColor          : '#58AFAA',
-            pointStrokeColor    : '#58AFAA',
-            pointHighlightFill  : '#fff',
-            pointHighlightStroke: '#58AFAA',
-            data                : [65, 59, 80, 81, 56, 55, 40]
-        },
-        ]
-    }
-
-    
-    //-------------
-    //- BAR CHART -
-    //-------------
-    var barChartCanvas = $('#barChart').get(0).getContext('2d')
-    var barChartData = $.extend(true, {}, areaChartData)
-    var temp0 = areaChartData.datasets[0]
-    var temp1 = areaChartData.datasets[1]
-    barChartData.datasets[0] = temp1
-    barChartData.datasets[1] = temp0
-
-    var barChartOptions = {
-        responsive              : true,
-        maintainAspectRatio     : false,
-        datasetFill             : false
-    }
-
-    new Chart(barChartCanvas, {
-        type: 'bar',
-        data: barChartData,
-        options: barChartOptions
-    })
-
-    })
-</script>
-
+            for (var i = 0; i < labels.length; i++) {
+                var label = labels[i];
+                var pemasukan = data[label]['pemasukan'] || 0;
+                var pengeluaran = data[label]['pengeluaran'] || 0;
+                pemasukanData.push(pemasukan);
+                pengeluaranData.push(pengeluaran);
+            }
+            var ctx = document.getElementById('pemasukan-pengeluaran').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Pemasukan',
+                        data: pemasukanData,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Pengeluaran',
+                        data: pengeluaranData,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+        </script>
 @include('admin.menu')
 @endsection
-
-  

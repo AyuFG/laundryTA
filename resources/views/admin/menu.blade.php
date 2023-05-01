@@ -1,7 +1,7 @@
     @if(auth()->user()->roles_id == 1)
     <section class="pt-3 px-3 bg-dark bottom-0 fixed-bottom">
     <div class="navbar p-0 d-block" id="mobile-footer-bar">
-        <ul class="container-fluid footer-bar">
+        <ul class="container-fluid footer-bar justify-content-evenly align-items-center">
             <a href="/super" class="d-flex flex-column align-items-center text-decoration-none fw-bold" style="color: #f1f1f1;">
                 <i class="fa-solid fa-house"></i>
                 <span>Beranda</span>

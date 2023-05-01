@@ -42,6 +42,7 @@
                             class="form-control"
                             name="nama_layanan"
                             id="nama_layanan"
+                            placeholder="Nama Pelayanan"
                             required
                         />
                     </div>
@@ -55,6 +56,7 @@
                             class="form-control"
                             name="deskripsi_layanan"
                             id="deskripsi_layanan"
+                            placeholder="Deskripsi Pelayanan"
                             required>
                         </textarea>
                     </div>

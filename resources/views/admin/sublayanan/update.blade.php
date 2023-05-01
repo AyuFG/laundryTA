@@ -46,6 +46,7 @@
                     @endif
                 </label>
                 </div>
+                <input type="hidden" name="layanan_id" value="{{$sublayanan->layanan_id}}">
                 <div class="mb-2 pb-2 row">
                     <label class="col-sm-3 col-form-label"
                         >Nama Jenis Pelayanan:

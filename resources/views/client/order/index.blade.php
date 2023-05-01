@@ -6,12 +6,11 @@
 
 <div class="vh-100">
     <div class="d-flex px-3 pt-4">
-        <a href="" class="text-decoration-none">
-            <button type="button" class="border-0" data-bs-dismiss="modal" aria-label="Close">
-                <i class="fa-solid fa-arrow-left fw-bolder"></i>
-            </button>
-            <span class="fw-bolder px-2" style="color: #E2DFEB; font-size: 20px;">Transaksi</span>
-        </a>
+        <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">
+            <a href="/member" style="color:#E2DFEB;"><i class="fa-solid fa-arrow-left font-weight-bolder"></i>
+                <span class="fw-bolder px-2">Transaksi</span>
+            </a>
+        </section>
     </div>
 
     <section class="row d-flex justify-content-center">
@@ -21,7 +20,7 @@
         <hr class="row w-75" style="background-color: #E2DFEB; color: #fff; height: 3px;">
     </section>
     
-    <section class="w-100 d-flex flex-column justify-content-center">
+    <section class="w-100 d-flex flex-column justify-content-center align-items-center" style="padding-bottom: 15vh;">
       @foreach ($orders as $order)
           <div class="card p-2 rounded-3" style="width: 75%;">
               <div class="d-flex mb-3">
@@ -42,7 +41,7 @@
               </div>
               <hr class="col mt-0" style="background-color: white; color: #3d3c42; height: 3px;">
               <div class="d-flex px-2 flex-row justify-content-between align-items-center">
-                  <span class="">{{$order->status}}</span>
+                  <span class="">{{$order->status_order}}</span>
                   @if (auth()->user()->roles_id == 3)
                   <a href="{{route('member.m-order.show',$order->id)}}" class="text-decoration-none">
                     <button class="btn border border-3">Detail</button>

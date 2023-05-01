@@ -28,44 +28,51 @@ use App\Http\Controllers\UserProfileController;
 */
 
 Auth::routes();
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-// CMS SUPER ADMIN
-Route::middleware([SuperAdmin::class])->name('super.')->prefix('super')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('index');
-    Route::resource('layanan', AdminLayananController::class);
-    Route::resource('transaksi', AdminTransaksiController::class);
-    Route::resource('sublayanan', AdminSubLayananController::class);
-    Route::resource('user', AdminUserController::class);
-    Route::resource('profile', UserProfileController::class);
-    Route::get('laporan', [AdminTransaksiController::class, 'indexLaporan']);
-    Route::get('chart', [AdminTransaksiController::class, 'indexChart']);
-  });
-
-// CMS ADMIN
-Route::middleware([Admin::class])->name('admin.')->prefix('admin')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('index');
-    Route::resource('layanan', AdminLayananController::class);
-    Route::resource('transaksi', AdminTransaksiController::class);
-    Route::resource('sublayanan', AdminSubLayananController::class);
-    Route::resource('profile', UserProfileController::class);
-    Route::get('laporan', [AdminTransaksiController::class, 'indexLaporan']);
-    Route::get('chart', [AdminTransaksiController::class, 'indexChart']);
-  });
-
-// MEMBER
-Route::middleware([Client::class])->name('member.')->prefix('member')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('index');
-    Route::resource('m-layanan', ClientLayananController::class);
-    Route::resource('m-order', ClientOrderController::class);
-    Route::resource('m-sublayanan', ClientSubLayananController::class);
-    Route::resource('profile', UserProfileController::class);
-  });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [HomeController::class, 'index']);
-  });
 
-  Route::get('/verifikasi', function () {
-    return view('auth.verify');
-  });
+  Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+  // CMS SUPER ADMIN
+  Route::middleware([SuperAdmin::class])->name('super.')->prefix('super')->group(function () {
+      Route::get('/', [HomeController::class, 'index'])->name('index');
+      Route::resource('layanan', AdminLayananController::class);
+      Route::resource('transaksi', AdminTransaksiController::class);
+      Route::resource('sublayanan', AdminSubLayananController::class);
+      Route::get('createSub/{id}', [AdminSubLayananController::class, 'createSub'])->name('createSub');
+      Route::resource('user', AdminUserController::class);
+      Route::resource('profile', UserProfileController::class);
+      Route::get('laporan', [AdminTransaksiController::class, 'indexLaporan']);
+      Route::get('chart', [AdminTransaksiController::class, 'indexChart']);
+    });
+
+  // CMS ADMIN
+  Route::middleware([Admin::class])->name('admin.')->prefix('admin')->group(function () {
+      Route::get('/', [HomeController::class, 'index'])->name('index');
+      Route::resource('layanan', AdminLayananController::class);
+      Route::resource('transaksi', AdminTransaksiController::class);
+      Route::resource('sublayanan', AdminSubLayananController::class);
+      Route::get('createSub/{id}', [AdminSubLayananController::class, 'createSub'])->name('createSub');
+      Route::resource('user', AdminUserController::class);
+      Route::resource('profile', UserProfileController::class);
+      Route::get('laporan', [AdminTransaksiController::class, 'indexLaporan']);
+      Route::get('chart', [AdminTransaksiController::class, 'indexChart']);
+    });
+
+  // MEMBER
+  Route::middleware([Client::class])->name('member.')->prefix('member')->group(function () {
+      Route::get('/', [HomeController::class, 'index'])->name('index');
+      Route::resource('m-layanan', ClientLayananController::class);
+      Route::resource('m-order', ClientOrderController::class);
+      Route::resource('m-sublayanan', ClientSubLayananController::class);
+      Route::resource('profile', UserProfileController::class);
+      Route::get('order/{id}', [ClientOrderController::class, 'order']);
+    });
+
+  Route::get('/', [HomeController::class, 'index']);
+
+});
+
+Route::get('/verifikasi', function () {
+  return view('auth.verify');
+});

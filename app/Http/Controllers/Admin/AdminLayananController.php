@@ -23,13 +23,18 @@ class AdminLayananController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'nama_layanan' => 'required',
+            'deskripsi_layanan' => 'required',
+        ]);
+
         $layanan = Layanan::create([
             'nama_layanan' => $request->nama_layanan,
             'deskripsi_layanan' => $request->deskripsi_layanan
         ]);
 
         $validasi = $request->validate([
-            'ikon_layanan' => 'required|mimes:jpg,bmp,png,svg,jpeg|max:2560 ',
+            'ikon_layanan' => 'required|mimes:jpg,bmp,png,svg,jpeg|max:1280 ',
         ]);
 
         $file = $validasi[('ikon_layanan')];
@@ -48,8 +53,9 @@ class AdminLayananController extends Controller
 
     public function show(string $id)
     {
-        $layanan = SubLayanan::all();
-        return view('admin.sublayanan.index', compact('layanan'));
+        $layanans = Layanan::findOrFail($id);
+        $sublayanans = SubLayanan::where('layanan_id', $id)->get();
+        return view('admin.sublayanan.index', compact('layanans', 'sublayanans'));
     }
 
     public function edit(string $id)
@@ -60,6 +66,11 @@ class AdminLayananController extends Controller
 
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'nama_layanan' => 'required',
+            'deskripsi_layanan' => 'required',
+        ]);
+
         $layanan = Layanan::where('id', $id)->first();
         $layanan->update(
             [

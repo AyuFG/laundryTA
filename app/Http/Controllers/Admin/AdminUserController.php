@@ -22,6 +22,14 @@ class AdminUserController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'nama' => 'required',
+            'email' => 'required',
+            'no_telepon' => 'required',
+            'password' => 'required',
+            'roles_id' => 'required'
+        ]);
+        
         User::create([
             'nama' => $request->nama,
             'email' => $request->email,

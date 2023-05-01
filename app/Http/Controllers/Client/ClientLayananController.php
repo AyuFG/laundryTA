@@ -17,7 +17,8 @@ class ClientLayananController extends Controller
 
     public function show(string $id)
     {
-        $sublayanans = SubLayanan::where('id', $id)->first();
-        return view('client.sublayanan.index', compact('sublayanans'));
+        $layanans = Layanan::findOrFail($id);
+        $sublayanans = SubLayanan::where('layanan_id', $id)->get();
+        return view('client.sublayanan.index', compact('layanans', 'sublayanans'));
     }
 }

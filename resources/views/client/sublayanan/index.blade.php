@@ -6,20 +6,20 @@
 
 <div class="vh-100"  style="background-color: #AD48FA;">
     <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="color: #E2DFEB; font-size: 20px;">
-        <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
-        <span class="fw-bolder px-2">Premium Deep Clean</span>
+        <a class="pr-3 text-light" href="{{ route('member.m-layanan.index') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+        <span class="fw-bolder px-2">{{$layanans->nama_layanan}}</span>
     </section>
+    <section class="px-4 body-section d-flex flex-column gap-3 pt-3" style="padding-bottom: 100px">
     @foreach ($sublayanans as $sublayanan)
-        <section class="px-4 body-section d-flex flex-column gap-3 py-3">
             <div class="d-flex align-items-center justify-content-between gap-4 bg-white rounded-4 px-4">
                 @if ($sublayanan->ikon_sub == Null)
-                    <img src="{{ asset('assets/ikon') }}/default.png" alt="ikon" height="40" width="40"/>
+                    <img src="{{ asset('assets/ikon') }}/default.png" alt="ikon" style="width: 4.2rem; height: 4.2rem;" class="p-1"/>
                 @else
-                    <img src="{{ asset('assets/ikon') }}/{{ $sublayanan->ikon_sub }}" alt="ikon" height="40" width="40"/>
+                    <img src="{{ asset('assets/ikon') }}/{{ $sublayanan->ikon_sub }}" alt="ikon" style="width: 4.2rem; height: 4.2rem;" class="p-1"/>
                 @endif
                 <span class="fw-bolder">{{ $sublayanan->nama_sub }}</span>
                 <div class="d-flex gap-2">
-                    <a href="{{route('member.m-order.create')}}">
+                    <a href="/member/order/{{$sublayanan->id}}">
                         <button class="btn fw-bold rounded-3" style="background-color: #D6C37E;" id="desc-toggle">
                             Desc
                         </button>
@@ -31,11 +31,11 @@
                     </a>
                 </div>
             </div>
+            @endforeach
         </section>
-    @endforeach
     
 </div>
 
+@include('menu')
 @endsection
 
-@include('menu')

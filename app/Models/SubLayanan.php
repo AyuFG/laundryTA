@@ -18,4 +18,8 @@ class SubLayanan extends Model
         'harga_sub'
     ];
 
+    public function layanan()
+    {
+        return $this->belongsTo(Layanan::class, 'layanan_id', 'id');
+    }
 }

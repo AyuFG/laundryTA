@@ -3,11 +3,12 @@
 @section('title', 'Edit Profile')
 
 @section('content')
-<div class="col-lg-12 col-lg-12 form-wrapper" id="edit-user">
-    <div class="card" style="background-color: #AD48FA; color: #f1f1f1">
-      <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="color: #E2DFEB; font-size: 20px;">
-        <a href="/member" style="color:black;"><i class="fa-solid fa-arrow-left font-weight-bolder"></i></a>
-        <span class="fw-bolder px-2">Edit Profile</span>
+<div class="col-lg-12 col-lg-12 vh-100 d-flex justify-content-center flex-column" id="edit-user">
+    <div class="card mx-lg-4" style="background-color: #AD48FA; color: #f1f1f1">
+      <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">
+        <a href="/member"><i class="fa-solid fa-arrow-left font-weight-bolder text-white"></i>
+          <span class="fw-bolder px-2" style="color: #E2DFEB;">Edit Profile</span>
+        </a>
       </section>
     <div class="card-body">
       @if(auth()->user()->roles_id == 3)
@@ -52,7 +53,7 @@
         </div>
         <div class="mb-3 row">
           <div class="col-sm-9">
-            <button type="submit" class="btn btn-primary ">Simpan</button>
+            <button type="submit" class="btn" style="background-color: #D6C37E;">Simpan</button>
           </div>
         </div>
         </form>

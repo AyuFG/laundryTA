@@ -13,10 +13,12 @@ class ListOrder extends Model
         'user_id',
         'token',
         'user_order',
+        'no_telepon',
         'jenis_pelayanan',
         'jenis_transaksi',
         'waktu_order',
         'alamat_order',
-        'harga_order'
+        'harga_order',
+        'status_order'
     ];
 }

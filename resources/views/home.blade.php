@@ -35,7 +35,7 @@
                                         </a>
                                         <a href="/super/transaksi" class="d-flex align-items-center px-5 w-100">
                                             <i class="fa-solid fa-clock-rotate-left" style="color: #2b2b2b"></i>
-                                            <p class="text-black m-0 px-2 text-lg">Riwayat Transaksi</p>
+                                            <p class="text-black m-0 px-2 text-lg">Transaksi</p>
                                         </a>
                                         <a href="/super/chart" class="d-flex align-items-center px-5 w-100">
                                             <i class="fa-solid fa-book" style="color: #2b2b2b"></i>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     
-                    <button data-bs-target="#exampleModalFullscreen" data-bs-toggle="modal" data-bs-dismiss="modal" class="btn" style="background-color: transparent">
+                    <button data-bs-target="#exampleModalFullscreen" data-bs-toggle="modal" data-bs-dismiss="modal" class="btn border-0" style="background-color: transparent">
                         <i class="fa-solid fa-bars" style="font-size: 3rem; color: #E2DFEB;"></i>
                     </button>
                     <a class="px-2" href="{{route('super.profile.edit',$user->id)}}">
@@ -84,7 +84,7 @@
                                         </a>
                                         <a href="/admin/transaksi" class="d-flex align-items-center px-5 w-100">
                                             <i class="fa-solid fa-clock-rotate-left" style="color: #2b2b2b"></i>
-                                            <p class="text-black m-0 px-2 text-lg">Riwayat Transaksi</p>
+                                            <p class="text-black m-0 px-2 text-lg">Transaksi</p>
                                         </a>
                                         <a href="/admin/chart" class="d-flex align-items-center px-5 w-100">
                                             <i class="fa-solid fa-book" style="color: #2b2b2b"></i>
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     
-                    <button data-bs-target="#exampleModalFullscreen" data-bs-toggle="modal" data-bs-dismiss="modal" class="btn" style="background-color: transparent">
+                    <button data-bs-target="#exampleModalFullscreen" data-bs-toggle="modal" data-bs-dismiss="modal" class="btn border-0" style="background-color: transparent">
                         <i class="fa-solid fa-bars" style="font-size: 3rem; color: #E2DFEB;"></i>
                     </button>
                     <a class="px-2" href="{{route('admin.profile.edit',$user->id)}}">
@@ -143,7 +143,7 @@
                     </div>
                 </div>
                 
-                <button data-bs-target="#exampleModalFullscreen" data-bs-toggle="modal" data-bs-dismiss="modal" class="btn" style="background-color: transparent">
+                <button data-bs-target="#exampleModalFullscreen" data-bs-toggle="modal" data-bs-dismiss="modal" class="btn border-0" style="background-color: transparent">
                     <i class="fa-solid fa-bars" style="font-size: 3rem; color: #E2DFEB;"></i>
                 </button>
                 <a class="px-2" href="{{route('member.profile.edit',$user->id)}}">

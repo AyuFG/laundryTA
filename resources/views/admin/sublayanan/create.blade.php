@@ -12,13 +12,14 @@
         <form method="POST" action="{{ route('admin.sublayanan.store') }}" enctype='multipart/form-data'>
     @endif
     @csrf
+    <input type="hidden" name="layanan_id" id="layanan_id" value="{{$layanan->id}}">
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">
                     @if(auth()->user()->roles_id == 1)
-                        <a class="pr-3 text-dark" href="{{ route('super.sublayanan.index') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                        <a class="pr-3 text-dark" href="{{ route('super.layanan.show',$layanan->id) }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
                     @elseif(auth()->user()->roles_id == 2)
-                        <a class="pr-3 text-dark" href="{{ route('admin.sublayanan.index') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                        <a class="pr-3 text-dark" href="{{ route('admin.layanan.show',$layanan->id) }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
                     @endif
                     <b>Tambah Jenis Pelayanan</b>
                 </h4>
@@ -46,6 +47,7 @@
                             class="form-control"
                             name="nama_sub"
                             id="nama_sub"
+                            placeholder="Nama Jenis Pelayanan"
                             required
                         />
                     </div>
@@ -57,6 +59,7 @@
                             class="form-control"
                             name="deskripsi_sub"
                             id="deskripsi_sub"
+                            placeholder="Deskripsi"
                             required>
                         </textarea>
                     </div>
@@ -71,6 +74,7 @@
                             class="form-control"
                             name="waktu_sub"
                             id="waktu_sub"
+                            placeholder="2"
                             required
                         />
                     </div>
@@ -83,6 +87,7 @@
                             class="form-control"
                             name="harga_sub"
                             id="harga_sub"
+                            placeholder="50000"
                             required
                         />
                     </div>

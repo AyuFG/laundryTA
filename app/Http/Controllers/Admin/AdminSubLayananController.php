@@ -2,19 +2,30 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Layanan;
 use App\Models\SubLayanan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AdminSubLayananController extends Controller
 {
-    public function create()
+    public function createSub(string $id)
     {
-        return view('admin.sublayanan.create');
+        $layanan = Layanan::where('id', $id)->first();
+        return view('admin.sublayanan.create', compact('layanan'));
     }
 
     public function store(Request $request)
     {
+
+        $request->validate([
+            'layanan_id' => 'required',
+            'nama_sub' => 'required',
+            'deskripsi_sub' => 'required',
+            'waktu_sub' => 'required',
+            'harga_sub' => 'required',
+        ]);
+
         $sublayanan = SubLayanan::create([
             'layanan_id' => $request->layanan_id,
             'nama_sub' => $request->nama_sub,
@@ -22,6 +33,7 @@ class AdminSubLayananController extends Controller
             'waktu_sub' => $request->waktu_sub,
             'harga_sub' => $request->harga_sub
         ]);
+        
 
         $validasi = $request->validate([
             'ikon_sub' => 'required|mimes:jpg,bmp,png,svg,jpeg|max:2560 ',
@@ -43,20 +55,22 @@ class AdminSubLayananController extends Controller
         }
     }
 
-    public function show(string $id)
-    {
-        $sublayanan = SubLayanan::where('id', $id)->first();
-        return view('admin.sublayanan.read', compact('sublayanan'));
-    }
-
     public function edit(string $id)
     {
+        $layanan = Layanan::where('id', $id)->first();
         $sublayanan = SubLayanan::where('id', $id)->first();
-        return view('admin.sublayanan.update', compact('sublayanan'));
+        return view('admin.sublayanan.update', compact('sublayanan', 'layanan'));
     }
 
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'nama_sub' => 'required',
+            'deskripsi_sub' => 'required',
+            'waktu_sub' => 'required',
+            'harga_sub' => 'required|numeric',
+        ]);
+
         $sublayanan = SubLayanan::where('id', $id)->first();
         $sublayanan->update(
             [
@@ -69,7 +83,7 @@ class AdminSubLayananController extends Controller
         );
         
         $validasi = $request->validate([
-            'ikon_sub' => 'required|mimes:jpg,bmp,png,svg,jpeg|max:2560 ',
+            'ikon_sub' => 'required|mimes:jpg,bmp,png,svg,jpeg|max:1280 ',
         ]);
 
         $file = $validasi[('ikon_sub')];
