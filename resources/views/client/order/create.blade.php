@@ -87,7 +87,7 @@
             
             
             <!-- Modal -->
-            <div class="modal fade show d-block" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-modal="false" role="dialog">
+            <div class="modal fade show" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-modal="false" role="dialog">
                         <div class="modal-dialog modal-fullscreen pb-4">
                             <div class="modal-content overflow-auto pb-4" style="background-color: #AD48FA;">
                                 <div class="d-flex px-3 pt-4">
