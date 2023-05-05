@@ -31,6 +31,7 @@ class AdminTransaksiController extends Controller
     {
         $orders = DB::table('list_order')
                     ->select(DB::raw("MONTH(waktu_order) as month"), 'jenis_transaksi', DB::raw('SUM(harga_order) as total'))
+                    ->where('status_order', 'Selesai')
                     ->groupBy('month', 'jenis_transaksi')
                     ->orderBy('month', 'asc')
                     ->get();
@@ -55,17 +56,24 @@ class AdminTransaksiController extends Controller
         $request->validate([
             'user_order' => 'required',
             'jenis_transaksi' => 'required',
+            'keluhan' => 'required',
             'waktu_order' => 'required',
             'harga_order' => 'required|numeric'
         ]);
 
         $token = "1324" . Time();
-        ListOrder::create([
+        $listorder = ListOrder::create([
             'token' => $token,
             'user_order' => $request->user_order,
             'jenis_transaksi' => $request->jenis_transaksi,
             'waktu_order' => $request->waktu_order,
-            'harga_order' => $request->harga_order
+            'harga_order' => $request->harga_order,
+            'keluhan' => $request->keluhan,
+            'status_order' => "Selesai"
+        ]);
+
+        DetailOrder::create([
+            'list_id' => $listorder->id,
         ]);
 
         if (auth()->user()->roles_id == 1) {
@@ -98,7 +106,7 @@ class AdminTransaksiController extends Controller
                 'token' => $token,
                 'user_order' => $request->user_order,
                 'jenis_pelayanan' => $request->jenis_pelayanan,
-                'jenis_transaksi' => $request->jenis_transaksi || "pemasukan",
+                'jenis_transaksi' => $request->jenis_transaksi,
                 'waktu_order' => $request->waktu_order,
                 'alamat_order' => $request->alamat_order,
                 'harga_order' => $request->harga_order,
@@ -107,7 +115,6 @@ class AdminTransaksiController extends Controller
                 ]
             );
         $detail->update([
-            'list_id' => $order->$id,
             'foto_keluhan' => $request->foto_keluhan,
             'opsi_pengiriman' => $request->opsi_pengiriman,
             'pembayaran' => $request->pembayaran,

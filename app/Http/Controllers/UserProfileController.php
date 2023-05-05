@@ -22,15 +22,24 @@ class UserProfileController extends Controller
     public function update(Request $request, string $id)
     {
         $user = User::where('id', auth()->user()->id )->firstOrFail();
-        $user->update(
-            [
-                'nama' => $request->nama,
-                'email' => $request->email,
-                'no_telepon' => $request->no_telepon,
-                'password' => Hash::make($request->password)
-            ]
-        );
-
+        if($request->password == null){
+            $user->update(
+                [
+                    'nama' => $request->nama,
+                    'email' => $request->email,
+                    'no_telepon' => $request->no_telepon,
+                ]
+            );
+        } else {
+            $user->update(
+                [
+                    'nama' => $request->nama,
+                    'email' => $request->email,
+                    'no_telepon' => $request->no_telepon,
+                    'password' => Hash::make($request->password)
+                ]
+            );
+        }
         $validasi = $request->validate([
             'gambar_user' => 'required|mimes:jpg,bmp,png,svg,jpeg|max:2560 ',
         ]);

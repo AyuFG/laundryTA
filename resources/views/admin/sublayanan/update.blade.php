@@ -100,17 +100,6 @@
                         />
                     </div>
                 </div>
-                <div class="mb-2 pb-2 row">
-                    <label class="col-sm-3 col-form-label"
-                        >Jenis Barang :
-                    </label>
-                    <select class="col-sm-9 col-form-label rounded-2" name="barang" id="barang" value="{{$sublayanan->barang_sub}}">
-                      <option value="sepatu">sepatu</option>
-                      <option value="sendal">sendal</option>
-                      <option value="baju">baju</option>
-                      <option value="celana">Audi</option>
-                    </select>
-                </div>
             </div>
         </div>
     </form>

@@ -34,34 +34,42 @@
                 </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped fs-6">
-                  <thead>
-                  <tr>
-                    <th>Tanggal</th>
-                    <th>Transaksi</th>
-                    <th>Nominal</th>
-                    <th>Nama User</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach ($laporans as $transaksi)
-                  <tr>
-                    <td>{{$transaksi->waktu_order}}</td>
-                    <td>{{$transaksi->jenis_transaksi}}</td>
-                    <td>{{$transaksi->harga_order}}</td>
-                    <td>{{$transaksi->user_order}}</td>
-                  </tr>
-                  @endforeach
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th>Tanggal</th>
-                    <th>Transaksi</th>
-                    <th>Nominal</th>
-                    <th>Nama User</th>
-                  </tr>
-                  </tfoot>
-                </table>
+                <div class="table-responsive">
+                  <table id="example1" class="table table-bordered table-striped fs-6">
+                    <thead>
+                    <tr>
+                      <th>Tanggal</th>
+                      <th>No. Order</th>
+                      <th>Transaksi</th>
+                      <th>Nominal</th>
+                      <th>Deskripsi</th>
+                      <th>Nama User</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($laporans as $transaksi)
+                    <tr>
+                      <td>{{$transaksi->waktu_order}}</td>
+                      <td>{{$transaksi->token}}</td>
+                      <td>{{$transaksi->jenis_transaksi}}</td>
+                      <td>{{$transaksi->harga_order}}</td>
+                      <td>{{Str::limit($transaksi->keluhan, 150)}}</td>
+                      <td>{{$transaksi->user_order}}</td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>Tanggal</th>
+                      <th>No. Order</th>
+                      <th>Transaksi</th>
+                      <th>Nominal</th>
+                      <th>Deskripsi</th>
+                      <th>Nama User</th>
+                    </tr>
+                    </tfoot>
+                  </table>
+                </div>
               </div>
               <!-- /.card-body -->
             </div>
@@ -76,18 +84,10 @@
 <script>
   $(function () {
     $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["csv", "excel", "pdf", "print"]
+      "lengthChange": true, "autoWidth": true,
+      "buttons": ["csv", "excel", "pdf", "print"],
+      
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
   });
 
   const searchInput = document.getElementById('search-input');

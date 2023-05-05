@@ -8,19 +8,25 @@
     <div class="vh-100">
         @if(auth()->user()->roles_id == 1)
         <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">
-            <a href="{{route('super.transaksi.index')}}" style="color:black;">
+            <a href="{{ url()->previous() }}" style="color:black;">
                 <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
                 <span class="fw-bolder px-2">Konfirmasi Order</span>
             </a>
         </section>
         @elseif(auth()->user()->roles_id == 2)
         <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">
-            <a href="{{route('admin.transaksi.index')}}" style="color:black;">
+            <a href="{{ url()->previous() }}" style="color:black;">
                 <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
                 <span class="fw-bolder px-2">Konfirmasi Order</span>
             </a>
         </section>
         @endif
+        <div class="input-group d-flex flex-column w-100 align-items-center pt-3 pb-0">
+            <a href="https://wa.me/+62{{$order->no_telepon}}?text=Halo saya admin SOC Clean Lampung">
+                        <button class="btn fw-bold rounded-3" style="background-color: #D6C37E; text-align: center;" id="Chat">
+                            Chat User
+                        </button>
+                    </a></div>
         <section class="px-4 pb-5">
             <form action="{{route("super.transaksi.update",$order->id)}}" method="POST">
                 @csrf
@@ -29,7 +35,7 @@
                     <div class="d-flex w-75">
                         <label class="fw-bold text-md" for="status_order">Status</label>
                     </div>
-                    <select class="custom-select d-flex w-75 rounded-3" id="status_order" value="{{$order->status_order}}" enabled>
+                    <select class="custom-select d-flex w-75 rounded-3" id="status_order" name="status_order" value="{{$order->status_order}}" enabled>
                         <option value="Belum Dikonfirmasi">Belum Dikonfirmasi</option>
                         <option value="Dikonfirmasi">Dikonfirmasi</option>
                         <option value="Sedang Dikerjakan">Sedang Dikerjakan</option>
@@ -87,7 +93,7 @@
                     </div>
                     <input class="border-1 rounded-3 py-2 px-3 w-75" type="text" name="keluhan" id="keluhan" value="{{$order->keluhan}}" enabled>
                 </div>
-                
+
                 <div class="d-flex flex-column w-100 align-items-center pt-3 pb-0">
                     <div class="d-flex w-75">
                         <label class="fw-bold text-md" for="pembayaran">Pembayaran</label>
@@ -98,12 +104,16 @@
                 <div class="d-flex flex-row w-100 align-items-center pt-3 pb-0">
                     <div class="d-flex flex-column w-75 align-items-center">
                         <label class="fw-bold text-md" for="foto_keluhan">Foto Keluhan</label>
-                        <img src="{{asset('assets/img')}}/{{$detail->foto_keluhan}}" class="border-1 rounded-3 py-2 px-3 bg-white" style="width: 8.2rem; height: 8.2rem;" name="foto_keluhan" id="foto_keluhan">
-                        <input class="visually-hidden" type="text" name="foto_keluhan" id="foto_keluhan" value="{{$detail->foto_pembayaran}}">
+                        <a href="{{asset('assets/img/keluhan')}}/{{$detail->foto_keluhan}}">
+                            <img src="{{asset('assets/img/keluhan')}}/{{$detail->foto_keluhan}}" class="border-1 rounded-3 py-2 px-3 bg-white" style="width: 8.2rem; height: 8.2rem;" name="foto_keluhan" id="foto_keluhan">
+                        </a>
+                        <input class="visually-hidden" type="text" name="foto_keluhan" id="foto_keluhan" value="{{$detail->foto_keluhan}}">
                     </div>
                     <div class="d-flex flex-column w-75 align-items-center">
                         <label class="fw-bold text-md" for="foto_pembayaran">Foto Pembayaran</label>
-                        <img src="{{asset('assets/img')}}/{{$detail->foto_pembayaran}}" class="border-1 rounded-3 py-2 px-3 bg-white" style="width: 8.2rem; height: 8.2rem;" name="foto_pembayaran" id="foto_pembayaran">
+                        <a href="{{asset('assets/img/pembayaran')}}/{{$detail->foto_pembayaran}}">
+                            <img src="{{asset('assets/img/pembayaran')}}/{{$detail->foto_pembayaran}}" class="border-1 rounded-3 py-2 px-3 bg-white" style="width: 8.2rem; height: 8.2rem;" name="foto_pembayaran" id="foto_pembayaran">
+                        </a>
                         <input class="visually-hidden" type="text" name="foto_pembayaran" id="foto_pembayaran" value="{{$detail->foto_pembayaran}}">
                     </div>
                 </div>
@@ -121,6 +131,8 @@
                     </div>
                     <input class="border-1 rounded-3 py-2 px-3 w-75 bg-white bg-opacity-75" type="text" name="no_rekening" id="no_rekening" value="{{$detail->no_rekening}}" enabled>
                 </div>
+
+                <input type="hidden" name="jenis_transaksi" value="{{$order->jenis_transaksi}}">
 
                 <div class="d-flex justify-content-center w-100 py-4">
                     <button class="btn btn-dark w-50" type="submit">Submit</button>

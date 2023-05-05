@@ -8,7 +8,7 @@
 
     <!-- bootstraps -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    
+
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{asset('assets/ikon/apple-icon-57x57.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{asset('assets/ikon/apple-icon-60x60.png')}}">
@@ -37,7 +37,7 @@
             <img src="{{asset('assets/img/main-logo.png')}}" style="width: 20rem;" alt="">
             <span class="text-white text-lg fw-medium text-center px-2">Akun anda berhasil dibuat, hubungi admin SOC Lampung untuk verifikasi</span>
             <div class="d-flex flex-row gap-3 pt-4">
-                <a href="https://wa.me/+62812345678?text=Verifikasi akun dengan nomor id user {{auth()->user()->id}}, nama {{auth()->user()->nama}}" class="d-flex text-decoration-none btn align-items-center" style="background-color: #D6C37E;">
+                <a href="https://wa.me/+6281397575460?text=Verifikasi akun dengan nomor id user {{auth()->user()->id}}, nama {{auth()->user()->nama}}" class="d-flex text-decoration-none btn align-items-center" style="background-color: #D6C37E;">
                     <i class="fa-brands fa-whatsapp"></i>
                     <span class="mx-2">Minta verifikasi admin</span>
                 </a>

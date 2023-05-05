@@ -8,18 +8,14 @@
 <div class="col-lg-12 form-wrapper" id="sublayanan">
     <div class="container">
         <div class="d-flex flex-row">
-            @if(auth()->user()->roles_id == 1)
-                <a class="pr-3 text-dark" href="{{ route('super.layanan.index') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
-            @elseif(auth()->user()->roles_id == 2)
-                <a class="pr-3 text-dark" href="{{ route('admin.layanan.index') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
-            @endif
-                <h4 class="card-title mb-4"><b>{{$layanans->nama_layanan}}</b></h4> 
-        </div>      
+                <a class="pr-3 text-dark" href="{{ url()->previous() }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                <h4 class="card-title mb-4"><b>{{$layanans->nama_layanan}}</b></h4>
+        </div>
             <div class="d-flex justify-content-end">
                 @if(auth()->user()->roles_id == 1)
-                    <a href="/super/createSub/{{$layanans->id}}" class="btn btn-dark btn-sm mb-4">Tambah</a>  
+                    <a href="/super/createSub/{{$layanans->id}}" class="btn btn-dark btn-sm mb-4">Tambah</a>
                 @elseif(auth()->user()->roles_id == 2)
-                    <a href="/admin/createSub/{{$layanans->id}}" class="btn btn-dark btn-sm mb-4">Tambah</a> 
+                    <a href="/admin/createSub/{{$layanans->id}}" class="btn btn-dark btn-sm mb-4">Tambah</a>
                 @endif
             </div>
             @foreach ($sublayanans->where('layanan_id', $layanans->id) as $sublayanan)
@@ -39,11 +35,6 @@
             <a href="{{ route('super.sublayanan.edit',$sublayanan->id) }}" class="btn btn-dark btn-sm mb-3 ml-1 mt-1 p-1">
             Edit
             </a>
-            @elseif(auth()->user()->roles_id == 2)
-            <a href="{{ route('admin.sublayanan.edit',$sublayanan->id) }}" class="btn btn-dark btn-sm mb-3 ml-1 mt-1 p-1">
-            Edit
-            </a>
-            @endif
             <button type="submit" class="btn btn-dark btn-sm mb-3 ml-1 mt-1 p-1" role="button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm{{$sublayanan->id}}">
             Hapus
             </button>
@@ -67,6 +58,7 @@
             </div>
             </div>
             </div>
+            @endif
             </div>
             </div>
             @endforeach

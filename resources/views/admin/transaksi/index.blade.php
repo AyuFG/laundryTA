@@ -7,26 +7,27 @@
   <div class="vh-100">
     @if(auth()->user()->roles_id == 1)
         <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">
-        <a href="/super" style="color:black;"><i class="fa-solid fa-arrow-left font-weight-bolder"></i></a>
+        <a href="{{ url()->previous() }}" style="color:black;"><i class="fa-solid fa-arrow-left font-weight-bolder"></i></a>
         <span class="fw-bolder px-2">Transaksi</span>
         </section>
     @elseif(auth()->user()->roles_id == 2)
         <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">
-        <a href="/admin" style="color:black;"><i class="fa-solid fa-arrow-left font-weight-bolder"></i></a>
+        <a href="{{ url()->previous() }}" style="color:black;"><i class="fa-solid fa-arrow-left font-weight-bolder"></i></a>
         <span class="fw-bolder px-2">Transaksi</span>
         </section>
     @endif
 
       <section class="row d-flex justify-content-center">
-          <p class="row justify-content-center">
-              Menampilkan semua riwayat transaksi
-          </p>
-          <hr class="row w-75" style="background-color: rgb(48, 48, 48);; color: #fff; height: 3px;">
-      </section>
-      
-      <section class="w-100 d-flex flex-column justify-content-center align-items-center" style="padding-bottom: 15vh;">
+            <p class="row justify-content-center">
+                Menampilkan semua riwayat transaksi
+            </p>
+            <hr class="row w-75" style="background-color: rgb(48, 48, 48);; color: #fff; height: 3px;">
+        </section>
+        
+        <section id="listorders" class="w-100 d-flex flex-column justify-content-center align-items-center" style="padding-bottom: 15vh;">
+            <input class="my-3 w-75" type="text" id="myInput" onkeyup="search()" placeholder="Search...">
         @foreach ($listorders as $transaksi)
-            <div class="card p-2 rounded-3" style="width: 75%;">
+            <div id="kartu-{{$transaksi->id}}" class="card p-2 rounded-3" style="width: 75%;">
                 <div class="d-flex mb-3">
                     <div class="d-flex justify-content-center align-content-center">
                         <i class="fa-regular fa-file-lines p-3" style="font-size: 2rem;"></i>
@@ -38,7 +39,7 @@
                                 {{$transaksi->waktu_order}}
                             </span>
                             <span class="text-md px-2 text-truncate w-50">
-                                {{$transaksi->keluhan}}
+                                {{Str::limit($transaksi->keluhan, 20)}}
                             </span>
                         </div>
                     </div>
@@ -62,4 +63,28 @@
   </div>
 
 @include('menu')
+@endsection
+@section('script')
+    <script>
+        function search() {
+        // mendapatkan inputan pencarian
+        var input, filter, listorders, kartu, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        listorders = document.getElementById("listorders");
+        kartu = listorders.getElementsByClassName("card");
+        
+        // melakukan iterasi pada setiap kartu
+        for (i = 0; i < kartu.length; i++) {
+            txtValue = kartu[i].textContent || kartu[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                // jika sesuai dengan pencarian, hapus class visually-hidden
+                kartu[i].classList.remove("visually-hidden");
+            } else {
+                // jika tidak sesuai dengan pencarian, tambahkan class visually-hidden
+                kartu[i].classList.add("visually-hidden");
+            }
+        }
+        }
+    </script>
 @endsection

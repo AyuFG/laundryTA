@@ -26,11 +26,11 @@
                         <input
                             type="text"
                             class="form-control"
-                            name="user_order"
-                            id="user_order"
-                            placeholder="nama"
-                            required enabled
+                            name="user"
+                            id="user"
+                            value="{{ auth()->user()->nama }}" disabled
                         />
+                        <input type="hidden" name="user_order" id="user_order" value={{ auth()->user()->nama }}>
                     </div>
                 </div>
                 <div class="mb-2 pb-2 row">
@@ -42,7 +42,21 @@
                             <option value="pemasukan">Pemasukan</option>
                             <option value="pengeluaran">Pengeluaran</option>
                         </select>
-                      </div>
+                    </div>
+                </div>
+                <div class="mb-2 pb-2 row">
+                    <label class="col-sm-3 col-form-label"
+                        >Deskripsi :
+                    </label>
+                    <div class="col-sm-9">
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="keluhan"
+                            id="keluhan"
+                            required enabled
+                        />
+                    </div>
                 </div>
                 <div class="mb-2 pb-2 row">
                     <label class="col-sm-3 col-form-label"
@@ -50,7 +64,7 @@
                     </label>
                     <div class="col-sm-9">
                         <input
-                            type="date"
+                            type="datetime-local"
                             class="form-control"
                             name="waktu_order"
                             id="waktu_order"
@@ -83,7 +97,7 @@
                     class="btn btn-dark btn-sm mb-3 ml-1 mt-1 p-1"
                 >
                     Batal
-            </button>            
+            </button>
         </div>
     </form>
 </div>

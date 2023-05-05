@@ -19,6 +19,7 @@ class ListOrder extends Model
         'waktu_order',
         'alamat_order',
         'harga_order',
-        'status_order'
+        'status_order',
+        'keluhan'
     ];
 }

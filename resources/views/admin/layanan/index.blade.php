@@ -9,6 +9,11 @@
     <div class="">
         <div class="d-flex px-3 py-3 flex-row justify-content-between align-items-center">
             <div class="bg-opacity-10" style="font-size: 1.2rem;">
+                @if(auth()->user()->roles_id == 1)
+                <a class="pr-3 text-dark" href="/super"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                @elseif(auth()->user()->roles_id == 2)
+                <a class="pr-3 text-dark" href="/admin"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                @endif
                 <span class="font-weight-bolder px-2">Detail Jenis Pelayanan</span>
             </div>
             <div class="d-flex">

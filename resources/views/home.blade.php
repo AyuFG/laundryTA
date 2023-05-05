@@ -56,7 +56,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <button data-bs-target="#exampleModalFullscreen" data-bs-toggle="modal" data-bs-dismiss="modal" class="btn border-0" style="background-color: transparent">
                         <i class="fa-solid fa-bars" style="font-size: 3rem; color: #E2DFEB;"></i>
                     </button>
@@ -66,7 +66,7 @@
                         @else
                             <img src="{{ asset('assets/profile') }}/{{ $user->gambar_user }}" alt="profile" class="rounded-circle" style="width: 60px; height: 60px; border:4px solid #E2DFEB; background-color: #E2DFEB">
                         @endif
-                    </a> 
+                    </a>
                 @elseif(auth()->user()->roles_id == 2)
                     <div class="modal fade show" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-modal="false" role="dialog">
                         <div class="modal-dialog fixed-bottom bottom-0">
@@ -90,6 +90,10 @@
                                             <i class="fa-solid fa-book" style="color: #2b2b2b"></i>
                                             <p class="text-black m-0 px-2 text-lg">Pembukuan</p>
                                         </a>
+                                        <a href="/admin/user" class="d-flex align-items-center px-5 w-100">
+                                            <i class="fa-solid fa-users" style="color: #2b2b2b"></i>
+                                            <p class="text-black m-0 px-2 text-lg">Kelola User</p>
+                                        </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" hidden>
                                             @csrf
                                         </form>
@@ -101,7 +105,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <button data-bs-target="#exampleModalFullscreen" data-bs-toggle="modal" data-bs-dismiss="modal" class="btn border-0" style="background-color: transparent">
                         <i class="fa-solid fa-bars" style="font-size: 3rem; color: #E2DFEB;"></i>
                     </button>
@@ -111,7 +115,7 @@
                         @else
                             <img src="{{ asset('assets/profile') }}/{{ $user->gambar_user }}" alt="profile" class="rounded-circle" style="width: 60px; height: 60px; border:4px solid #E2DFEB; background-color: #E2DFEB">
                         @endif
-                    </a> 
+                    </a>
                 @elseif(auth()->user()->roles_id == 3)
                 <div class="modal fade show" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-modal="false" role="dialog">
                     <div class="modal-dialog fixed-bottom bottom-0">
@@ -142,7 +146,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <button data-bs-target="#exampleModalFullscreen" data-bs-toggle="modal" data-bs-dismiss="modal" class="btn border-0" style="background-color: transparent">
                     <i class="fa-solid fa-bars" style="font-size: 3rem; color: #E2DFEB;"></i>
                 </button>
@@ -152,15 +156,15 @@
                     @else
                         <img src="{{ asset('assets/profile') }}/{{ $user->gambar_user }}" alt="profile" class="rounded-circle" style="width: 60px; height: 60px; border:4px solid #E2DFEB; background-color: #E2DFEB">
                     @endif
-                </a>  
+                </a>
                 @endif
-                
+
             </div>
         </section>
         <section class="px-4">
             <div class="d-flex gap-4 align-items-center text-white text-md fw-normal mt-1">
                 <i class="fa-solid fa-calendar-days"></i>
-                <span>Senin - Jum'at</span>
+                <span>Senin - Sabtu</span>
             </div>
             <div class="d-flex gap-4 align-items-center text-white text-md fw-normal mt-1">
                 <i class="fa-regular fa-clock"></i>
@@ -197,7 +201,7 @@
                 </a>
             @endforeach
             @if(auth()->user()->roles_id == 1)
-                <a href="{{ route('super.layanan.index') }}" class="d-flex align-items-center gap-4 bg-white ps-4 text-decoration-none font-weight-bolder text-black rounded-4"> 
+                <a href="{{ route('super.layanan.index') }}" class="d-flex align-items-center gap-4 bg-white ps-4 text-decoration-none font-weight-bolder text-black rounded-4">
             @elseif(auth()->user()->roles_id == 2)
                 <a href="{{ route('admin.layanan.index') }}" class="d-flex align-items-center gap-4 bg-white ps-4 text-decoration-none font-weight-bolder text-black rounded-4">
             @elseif(auth()->user()->roles_id == 3)
