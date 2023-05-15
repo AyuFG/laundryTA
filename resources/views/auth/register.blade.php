@@ -30,70 +30,43 @@
     <!-- font awasom -->
     <script src="https://kit.fontawesome.com/2a99f4df77.js" crossorigin="anonymous"></script>
 </head>
-<body style="background-color: #AD48FA;">
+<body style="background-color: #24A384;">
     <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="color: #E2DFEB; font-size: 20px;">
-        <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
+        <a href="/login" style="color: #E2DFEB;">
+            <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
+        </a>
         <span class="font-weight-bolder px-2">Buat Akun</span>
     </section>
     <div class="d-flex justify-content-center mb-4 mt-0">
-        <div class="d-flex justify-content-center align-items-center flex-column pt-5">
+        <div class="d-flex justify-content-center align-items-center flex-column pt-4">
             <img src="../assets/img/main-logo.png" style="width: 20rem;" alt="">
     
             <form action="{{ route('register') }}" method="POST" class="d-flex flex-column gap-3 justify-content-center align-items-center w-100">
                 @csrf
                 <input class="border-0 rounded-3 py-2 px-3 w-75 @error('nama') is-invalid @enderror" value="{{ old('nama') }}" required autocomplete="nama" autofocus type="text" name="nama" placeholder="Nama" required>
                 @error('nama')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <input class="border-0 rounded-3 py-2 px-3 w-75  @error('email') is-invalid @enderror" type="email" name="email" placeholder="Email" required>
+                @error('email')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <input class="border-0 rounded-3 py-2 px-3 w-75  @error('no_telepon') is-invalid @enderror" type="text" name="no_telepon" placeholder="Nomor Telepon : 08..." required>
+                @error('no_telepon')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <input class="border-0 rounded-3 py-2 px-3 w-75  @error('alamat') is-invalid @enderror" type="text" name="alamat" id="alamat" placeholder="Alamat">
+                @error('alamat')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <input class="border-0 rounded-3 py-2 px-3 w-75 @error('password') is-invalid @enderror" type="password" name="password" id="password" placeholder="Password" required autocomplete="current-password">
+                <input class="border-0 rounded-3 py-2 px-3 w-75 @error('password') is-invalid @enderror" type="password" name="password_confirmation" id="password-confirm"  placeholder="Konfirmasi Password" required autocomplete="current-password">
                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                <!-- Modal -->
-                <div class="modal fade show" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-modal="false" role="dialog">
-                    <div class="modal-dialog modal-fullscreen">
-                        <div class="modal-content" style="background-color: #AD48FA;">
-                            <div class="d-flex px-3 pt-4">
-                                <button type="button" class="border-0" data-bs-dismiss="modal" aria-label="Close" style="background-color: #AD48FA; color: #E2DFEB; font-size: 20px;">
-                                    <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
-                                </button>
-                                <span class="font-weight-bolder px-2" style="color: #E2DFEB; font-size: 20px;">Lengkapi Akun</span>
-                            </div>
-                        <div class="d-flex justify-content-center gap-3 align-items-center flex-column">
-                            <img src="../assets/img/main-logo.png" style="width: 20rem;" alt="">
-                            <div class="d-flex flex-column gap-3 justify-content-center align-items-center w-100">
-                                <input class="border-0 rounded-3 py-2 px-3 w-75  @error('email') is-invalid @enderror" type="email" name="email" placeholder="Email" required>
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <input class="border-0 rounded-3 py-2 px-3 w-75  @error('no_telepon') is-invalid @enderror" type="text" name="no_telepon" placeholder="Nomor Telepon" required>
-                                @error('no_telepon')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <input class="border-0 rounded-3 py-2 px-3 w-75  @error('alamat') is-invalid @enderror" type="text" name="alamat" id="alamat" placeholder="Alamat">
-                                @error('alamat')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <input class="border-0 rounded-3 py-2 px-3 w-75" type="password" name="password_confirmation" id="password-confirm"  placeholder="Konfirmasi Password" required autocomplete="current-password">
-                                
-                                <button type="submit" class="btn w-25 mt-2" style="background-color: #D6C37E;">Daftar</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                
+                <button type="submit" class="btn w-25 mt-2" style="background-color: #D6C37E;">Daftar</button>
             </form>
-            <button data-bs-target="#exampleModalFullscreen" data-bs-toggle="modal" data-bs-dismiss="modal" class="btn w-25 mt-3" style="background-color: #D6C37E;">Next</button>
             <div class="w-100  mt-4 pt-4"></div>
     
         </div>

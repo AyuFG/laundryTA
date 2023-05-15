@@ -3,7 +3,7 @@
 @section('title', 'Detail Order')
 
 @section('content')
-<body class="" style="background-color: #AD48FA;">
+<body class="" style="background-color: #24A384;">
     <div class="vh-100">
         @if(auth()->user()->roles_id == 3)
         <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">

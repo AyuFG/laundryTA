@@ -21,7 +21,7 @@
     </section>
     
     <section class="w-100 d-flex flex-column justify-content-center align-items-center" style="padding-bottom: 15vh;">
-      @foreach ($orders as $order)
+      @foreach ($orders->where('user_id') as $order)
           <div class="card p-2 rounded-3" style="width: 75%;">
               <div class="d-flex mb-3">
                   <div class="d-flex justify-content-center align-content-center">
@@ -33,8 +33,8 @@
                           <span class="text-md">
                               {{$order->waktu_order}}
                           </span>
-                          <span class="text-md px-2 text-truncate w-50">
-                              {{$order->keluhan}}
+                          <span class="text-md px-2 w-50">
+                              {{Str::limit($order->keluhan, 8)}}
                           </span>
                       </div>
                   </div>

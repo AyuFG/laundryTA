@@ -26,31 +26,46 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nama</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" placeholder="nama" name="nama" id="nama" value="{{$user->nama}}" enabled>
+          <input type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="nama" name="nama" id="nama" value="{{$user->nama}}" enabled>
+          @error('nama')
+              <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
         </div>
       </div>
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Email</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" placeholder="email" name="email" id="email" value="{{$user->email}}" enabled>
+          <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="email" name="email" id="email" value="{{$user->email}}" enabled>
+          @error('email')
+              <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
         </div>
       </div>
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Gambar User</label>
         <div class="col-sm-9">
-          <input type="file" class="form-control" placeholder="gambar_user" name="gambar_user" id="gambar_user" value="{{$user->gambar_user}}" enabled>
+          <input type="file" class="form-control @error('gambar_user') is-invalid @enderror" placeholder="gambar_user" name="gambar_user" id="gambar_user" value="{{$user->gambar_user}}" enabled>
+          @error('gambar_user')
+              <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
         </div>
       </div>
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">No Telepon</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" placeholder="no_telepon" name="no_telepon" id="no_telepon" value="{{$user->no_telepon}}" enabled>
+          <input type="text" class="form-control @error('no_telepon') is-invalid @enderror" placeholder="no_telepon" name="no_telepon" id="no_telepon" value="{{$user->no_telepon}}" enabled>
+          @error('no_telepon')
+              <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
         </div>
       </div>
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Password Baru</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" placeholder="password" name="password" id="password" enabled>
+          <input type="text" class="form-control @error('password') is-invalid @enderror" placeholder="password" name="password" id="password" enabled>
+          @error('password')
+              <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
         </div>
       </div>
       <div class="mb-3 row">

@@ -22,13 +22,25 @@ class AdminUserController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required',
-            'email' => 'required',
-            'no_telepon' => 'required',
-            'password' => 'required',
-            'roles_id' => 'required'
-        ]);
+        $request->validate(
+            [
+                'nama' => 'required|max:255',
+                'email' => 'required|max:255|unique:users,email',
+                'no_telepon' => 'required',
+                'password' => 'required',
+                'roles_id' => 'required'
+            ],
+            [
+                'nama.required' => 'Nama harus diisi!',
+                'nama.max' => 'Nama maksimal 255 karakter!',
+                'email.required' => 'Email harus diisi!',
+                'email.max' => 'Email maksimal 255 karakter!',
+                'email.unique' => 'Email sudah terdaftar!',
+                'no_telepon.required' => 'No Telepon harus diisi!',
+                'password.required' => 'Password harus diisi!',
+                'roles_id.required' => 'Roles harus diisi!'
+            ]
+        );
         
         User::create([
             'nama' => $request->nama,
@@ -57,6 +69,23 @@ class AdminUserController extends Controller
 
     public function update(Request $request, string $id)
     {
+        $request->validate(
+            [
+                'nama' => 'required|max:255',
+                'email' => 'required|max:255',
+                'no_telepon' => 'required',
+                'roles_id' => 'required'
+            ],
+            [
+                'nama.required' => 'Nama harus diisi!',
+                'nama.max' => 'Nama maksimal 255 karakter!',
+                'email.required' => 'Email harus diisi!',
+                'email.max' => 'Email maksimal 255 karakter!',
+                'no_telepon.required' => 'No Telepon harus diisi!',
+                'roles_id.required' => 'Roles harus diisi!'
+            ]
+        );
+
         $user = User::where('id', $id)->first();
         $user->update(
             [
@@ -74,7 +103,7 @@ class AdminUserController extends Controller
 
     public function destroy(string $id)
     {
-        $data = User::where('id', $id)->first();
+        $data = User::findOrFail($id);
         $data->delete();
 
         if (auth()->user()->roles_id == 1) {

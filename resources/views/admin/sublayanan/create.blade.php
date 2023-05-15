@@ -34,7 +34,10 @@
                 <div class="d-flex justify-content-center m-4">
                     <label for="ikon_sub" style="cursor: pointer">
                         <i class="fa-solid fa-camera fa-2xl"></i>
-                        <input type="file" class="visually-hidden" placeholder="ikon_sub" name="ikon_sub" id="ikon_sub" enabled>
+                        <input type="file" class="visually-hidden" name="ikon_sub" id="ikon_sub" enabled>
+                        @error('ikon_sub')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </label>
                 </div>
                 <div class="mb-2 pb-2 row">
@@ -44,24 +47,30 @@
                     <div class="col-sm-9">
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control @error('nama_sub') is-invalid @enderror" value="{{ old('nama_sub') }}"
                             name="nama_sub"
                             id="nama_sub"
                             placeholder="Nama Jenis Pelayanan"
                             required
                         />
+                        @error('nama_sub')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-2 pb-2 row">
                     <label class="col-sm-3 col-form-label">Deskripsi : </label>
                     <div class="col-sm-9">
                         <textarea
-                            class="form-control"
+                            class="form-control @error('deskripsi_sub') is-invalid @enderror" value="{{ old('deskripsi_sub') }}"
                             name="deskripsi_sub"
                             id="deskripsi_sub"
                             placeholder="Deskripsi"
                             required>
                         </textarea>
+                        @error('deskripsi_sub')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-2 pb-2 row">
@@ -71,12 +80,15 @@
                     <div class="col-sm-9">
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control @error('waktu_sub') is-invalid @enderror" value="{{ old('waktu_sub') }}"
                             name="waktu_sub"
                             id="waktu_sub"
                             placeholder="2"
                             required
                         />
+                        @error('waktu_sub')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-2 pb-2 row">
@@ -84,12 +96,15 @@
                     <div class="col-sm-9">
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control @error('harga_sub') is-invalid @enderror" value="{{ old('harga_sub') }}"
                             name="harga_sub"
                             id="harga_sub"
                             placeholder="50000"
                             required
                         />
+                        @error('harga_sub')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
             </div>

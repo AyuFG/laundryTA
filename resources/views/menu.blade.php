@@ -13,7 +13,7 @@
         </a>
     </section>
     @elseif(auth()->user()->roles_id == 3)
-    <section class="p-3 bottom-0 fixed-bottom" style="background-color: #AD48FA">
+    <section class="p-3 bottom-0 fixed-bottom" style="background-color: #24A384">
         <a href="/member" class="d-flex flex-column align-items-center text-decoration-none fw-bold" style="color: #f1f1f1;">
             <i class="fa-solid fa-house"></i>
             <span>Beranda</span>

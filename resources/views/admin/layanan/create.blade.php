@@ -29,7 +29,12 @@
                 <div class="d-flex justify-content-center m-4">
                     <label for="ikon_layanan" style="cursor: pointer">
                             <i class="fa-solid fa-camera fa-2xl"></i>
-                            <input type="file" class="visually-hidden" placeholder="ikon_layanan" name="ikon_layanan" id="ikon_layanan" enabled>
+                            <input type="file" class="visually-hidden" name="ikon_layanan" id="ikon_layanan" enabled>
+                            @error('ikon_layanan')
+                                <span class="invalid-feedback text-center" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                     </label>
                 </div>
                 <div class="mb-3 pb-4 row">
@@ -39,12 +44,15 @@
                     <div class="col-sm-9">
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control @error('nama_layanan') is-invalid @enderror" value="{{ old('nama_layanan') }}"
                             name="nama_layanan"
                             id="nama_layanan"
                             placeholder="Nama Pelayanan"
                             required
                         />
+                        @error('nama_layanan')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3 pb-4 row">
@@ -53,12 +61,15 @@
                     </label>
                     <div class="col-sm-9">
                         <textarea
-                            class="form-control"
+                            class="form-control @error('deskripsi_layanan') is-invalid @enderror" value="{{ old('deskripsi_layanan') }}"
                             name="deskripsi_layanan"
                             id="deskripsi_layanan"
                             placeholder="Deskripsi Pelayanan"
                             required>
                         </textarea>
+                        @error('deskripsi_layanan')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
             </div>

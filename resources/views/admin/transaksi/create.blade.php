@@ -51,11 +51,14 @@
                     <div class="col-sm-9">
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control @error('keluhan') is-invalid @enderror"
                             name="keluhan"
                             id="keluhan"
                             required enabled
                         />
+                        @error('keluhan')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-2 pb-2 row">
@@ -77,12 +80,15 @@
                     <div class="col-sm-9">
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control @error('harga_order') is-invalid @enderror"
                             name="harga_order"
                             id="harga_order"
                             placeholder="10000"
                             required enabled
                         />
+                        @error('harga_order')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -93,7 +99,7 @@
                     Simpan
             </button>
             <button
-                    type="submit"
+                    type="reset"
                     class="btn btn-dark btn-sm mb-3 ml-1 mt-1 p-1"
                 >
                     Batal

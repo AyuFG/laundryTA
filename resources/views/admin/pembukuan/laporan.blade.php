@@ -40,10 +40,10 @@
                     <tr>
                       <th>Tanggal</th>
                       <th>No. Order</th>
-                      <th>Transaksi</th>
-                      <th>Nominal</th>
-                      <th>Deskripsi</th>
                       <th>Nama User</th>
+                      <th>Transaksi</th>
+                      <th>Deskripsi</th>
+                      <th>Nominal</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -51,10 +51,10 @@
                     <tr>
                       <td>{{$transaksi->waktu_order}}</td>
                       <td>{{$transaksi->token}}</td>
-                      <td>{{$transaksi->jenis_transaksi}}</td>
-                      <td>{{$transaksi->harga_order}}</td>
-                      <td>{{Str::limit($transaksi->keluhan, 150)}}</td>
                       <td>{{$transaksi->user_order}}</td>
+                      <td>{{$transaksi->jenis_transaksi}}</td>
+                      <td>{{Str::limit($transaksi->keluhan, 150)}}</td>
+                      <td>{{$transaksi->harga_order}}</td>
                     </tr>
                     @endforeach
                   </tbody>
@@ -62,10 +62,10 @@
                     <tr>
                       <th>Tanggal</th>
                       <th>No. Order</th>
-                      <th>Transaksi</th>
-                      <th>Nominal</th>
-                      <th>Deskripsi</th>
                       <th>Nama User</th>
+                      <th>Transaksi</th>
+                      <th>Deskripsi</th>
+                      <th>Nominal</th>
                     </tr>
                     </tfoot>
                   </table>

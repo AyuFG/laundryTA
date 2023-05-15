@@ -10,7 +10,7 @@
         <section class="nev-section py-5 px-4 d-flex justify-content-between align-items-center">
             <div class="p-2 d-flex rounded-4" style="background-color: #f1f1f1; color:black;">
 @else
-<body style="background-color: #AD48FA;">
+<body style="background-color: #24A384;">
     <div class="vh-100">
         <section class="nev-section py-5 px-4 d-flex justify-content-between align-items-center">
             <div class="p-2 d-flex rounded-4" style="background-color: #D6C37E;">
@@ -193,9 +193,9 @@
                 <a href="{{ route('member.m-layanan.show',$layanan->id) }}" class="d-flex align-items-center gap-4 bg-white ps-4 text-decoration-none font-weight-bolder text-black rounded-4">
             @endif
                     @if ($layanan->ikon_layanan == Null)
-                        <img src="{{ asset('assets/ikon/default.png') }}" alt="ikon" style="width: 4.2rem; height: 4.2rem;" class="p-1" alt="">
+                        <img src="{{ asset('assets/ikon/default.png') }}" alt="ikon" style="width: 4.2rem; height: 4.2rem;" class="p-1 rounded-circle" alt="">
                     @else
-                        <img src="{{ asset("assets/ikon/{$layanan->ikon_layanan}") }}" alt="ikon" style="width: 4.2rem; height: 4.2rem;" class="p-1" alt="">
+                        <img src="{{ asset("assets/ikon/{$layanan->ikon_layanan}") }}" alt="ikon" style="width: 4.2rem; height: 4.2rem;" class="p-1 rounded-circle" alt="">
                     @endif
                     <span>{{ $layanan->nama_layanan }}</span>
                 </a>
@@ -207,7 +207,7 @@
             @elseif(auth()->user()->roles_id == 3)
                 <a href="{{ route('member.m-layanan.index') }}" class="d-flex align-items-center gap-4 bg-white ps-4 text-decoration-none font-weight-bolder text-black rounded-4">
             @endif
-                    <img src="{{ asset('assets/img/clean-shoes.png')}}" style="width: 4.2rem; height: 4.2rem;" class="p-1" alt="">
+                    <img src="{{ asset('assets/ikon/default.png')}}" style="width: 4.2rem; height: 4.2rem;" class="p-1 rounded-circle" alt="">
                     <span>Other</span>
                 </a>
         </section>

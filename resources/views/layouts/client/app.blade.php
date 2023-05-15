@@ -48,7 +48,7 @@
   <meta name="theme-color" content="#ffffff">
 
 </head>
-<body style="background-color: #AD48FA; color: #f1f1f1">
+<body style="background-color: #24A384; color: #f1f1f1">
   <!-- Splash Screen -->
   <div class="preloader flex-row justify-content-center align-items-center">
     <img class="animation__shake" src="{{asset('assets/img/splash1.png')}}" alt="splash" height="100" width="100">

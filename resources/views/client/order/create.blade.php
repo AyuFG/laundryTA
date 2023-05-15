@@ -3,10 +3,10 @@
 @section('title', 'Order')
 
 @section('content')
-<body class="" style="background-color: #AD48FA;">
+<body class="" style="background-color: #24A384;">
     <div class="vh-100">
         <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">
-            <a href="{{ route('member.m-layanan.index') }}" class="bg-opacity-10 btn" style="color: #E2DFEB;font-size: 1.2rem;">
+            <a href="/member/m-layanan" class="bg-opacity-10 btn" style="color: #E2DFEB;font-size: 1.2rem;">
                 <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
                 <span class="fw-bolder px-2">Order</span>
             </a>
@@ -34,22 +34,30 @@
                                 <div class="col-sm-9">
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control @error('nama_sub') is-invalid @enderror"
                                         name="nama_sub"
                                         id="nama_sub"
                                         value="{{$order->nama_sub}}"
                                         required disabled
                                     />
+                                    @error('nama_sub')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="mb-2 pb-2 row">
                                 <label class="col-sm-3 col-form-label">Deskripsi : </label>
                                 <div class="col-sm-9">
                                     <textarea
-                                        class="form-control"
+                                        class="form-control @error('deskripsi_sub') is-invalid @enderror"
                                         name="deskripsi_sub"
                                         id="deskripsi_sub"
                                         required disabled>{{$order->deskripsi_sub}}</textarea>
+                                        @error('deskripsi_sub')
+                                            <span class="invalid-feedback text-center" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                 </div>
                             </div>
                             <div class="mb-2 pb-2 row">
@@ -59,12 +67,15 @@
                                 <div class="col-sm-9">
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control @error('waktu_sub') is-invalid @enderror"
                                         name="waktu_sub"
                                         id="waktu_sub"
                                         value="{{$order->waktu_sub}} hari"
                                         required disabled
                                     />
+                                    @error('waktu_sub')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="mb-2 pb-2 row">
@@ -72,12 +83,15 @@
                                 <div class="col-sm-9">
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control @error('harga_sub') is-invalid @enderror"
                                         name="harga_sub"
                                         id="harga_sub"
                                         value="{{$order->harga_sub}}"
                                         required disabled
                                     />
+                                    @error('harga_sub')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -89,9 +103,9 @@
             <!-- Modal -->
             <div class="modal fade show" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-modal="false" role="dialog">
                         <div class="modal-dialog modal-fullscreen pb-4">
-                            <div class="modal-content overflow-auto pb-4" style="background-color: #AD48FA;">
+                            <div class="modal-content overflow-auto pb-4" style="background-color: #24A384;">
                                 <div class="d-flex px-3 pt-4">
-                                    <button type="button" class="border-0" data-bs-dismiss="modal" aria-label="Close" style="background-color: #AD48FA; color: #E2DFEB; font-size: 20px;">
+                                    <button type="button" class="border-0" data-bs-dismiss="modal" aria-label="Close" style="background-color: #24A384; color: #E2DFEB; font-size: 20px;">
                                         <i class="fa-solid fa-arrow-left font-weight-bolder"></i>
                                     </button>
                                     <span class="font-weight-bolder px-2" style="color: #E2DFEB; font-size: 20px;">Order</span>
@@ -130,7 +144,12 @@
                                         <div class="d-flex w-100">
                                             <label class="fw-bold text-md text-white mb-0 mt-2" for="harga_order">Estimasi Waktu</label>
                                         </div>
-                                        <input class="border-0 rounded-3 py-2 px-3 w-100 text-white text-lg fw-normal" type="text" name="harga_order" required id="harga_order" value="{{$order->waktu_sub}} hari" disabled>
+                                        <input class="border-0 rounded-3 py-2 px-3 w-100 text-white text-lg fw-normal @error('harga_order') is-invalid @enderror" type="text" name="harga_order" required id="harga_order" value="{{$order->waktu_sub}} hari" disabled>
+                                        @error('harga_order')
+                                            <span class="invalid-feedback text-center" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="d-flex flex-column w-100 align-items-center">
@@ -154,21 +173,30 @@
                                     <div class="d-flex w-75">
                                         <label class="fw-bold text-md text-white" for="alamat_order">Alamat</label>
                                     </div>
-                                    <input class="border-0 rounded-3 py-2 px-3 w-75" type="text" name="alamat_order" required id="alamat_order" placeholder="Jalan .....">
+                                    <input class="border-0 rounded-3 py-2 px-3 w-75 @error('alamat_order') is-invalid @enderror" type="text" name="alamat_order" required id="alamat_order" placeholder="Masukkan alamat anda">
+                                    @error('alamat_order')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
             
                                 <div class="d-flex flex-column w-100 align-items-center">
                                     <div class="d-flex w-75">
                                         <label class="fw-bold text-md text-white" for="keluhan">Keluhan</label>
                                     </div>
-                                    <input class="border-0 rounded-3 py-2 px-3 w-75" type="text" name="keluhan" required id="keluhan" placeholder="Contoh : Sepatu kotor di bagian....">
+                                    <input class="border-0 rounded-3 py-2 px-3 w-75 @error('keluhan') is-invalid @enderror" type="text" name="keluhan" required id="keluhan" placeholder="Masukkan keluhan anda">
+                                    @error('keluhan')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 
                                 <div class="d-flex flex-column w-100 align-items-center">
                                     <div class="d-flex w-75">
                                         <label class="fw-bold text-md text-white" for="foto_keluhan">Foto Keluhan</label>
                                     </div>
-                                    <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white" type="file" name="foto_keluhan" id="foto_keluhan">
+                                    <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white @error('foto_keluhan') is-invalid @enderror" type="file" name="foto_keluhan" required id="foto_keluhan">
+                                    @error('foto_keluhan')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="d-flex flex-column w-100 align-items-center">
@@ -187,7 +215,7 @@
                                 </div>
                                 
                                 <div class="input-group d-flex flex-column justify-content-center w-75">
-                                    <label class="fw-bold text-md text-white border-0" style="background-color: #AD48FA;" for="pembayaran">Metode Pembayaran</label>
+                                    <label class="fw-bold text-md text-white border-0" style="background-color: #24A384;" for="pembayaran">Metode Pembayaran</label>
                                     <select class="custom-select border-0 rounded-3 py-2 px-3 w-100" required id="pembayaran" name="pembayaran">
                                         <option selected value="tunai">Tunai</option>
                                         <option value="QRIS">QRIS</option>
@@ -196,10 +224,10 @@
                                 </div>
 
                                 <div class="input-group d-flex flex-column justify-content-center w-75">
-                                    <label class="fw-bold text-md text-white border-0" style="background-color: #AD48FA;" for="opsi_pengiriman">Opsi Pengiriman</label>
+                                    <label class="fw-bold text-md text-white border-0" style="background-color: #24A384;" for="opsi_pengiriman">Opsi Pengiriman</label>
                                     <select class="custom-select border-0 rounded-3 py-2 px-3 w-100" required id="opsi_pengiriman" name="opsi_pengiriman">
-                                        <option selected value="pickup">Pick Up</option>
-                                        <option value="delivery">Delivery</option>
+                                        <option selected value="kunjungi toko">Kunjungi Toko</option>
+                                        <option value="antar jemput">Antar Jemput</option>
                                     </select>
                                 </div>
 
@@ -207,14 +235,20 @@
                                     <div class="d-flex w-75">
                                         <label class="fw-bold text-md text-white" for="no_rekening">No. Rekening (optional)</label>
                                     </div>
-                                    <input class="border-0 rounded-3 py-2 px-3 w-75" type="text" name="no_rekening" id="no_rekening" placeholder="12131">
+                                    <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white" type="text" name="no_rekening" id="no_rekening" placeholder="Masukkan no.rekening anda">
+                                    @error('no_rekening')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="d-flex flex-column w-100 align-items-center">
                                     <div class="d-flex w-75">
                                         <label class="fw-bold text-md text-white" for="foto_pembayaran">Bukti Pembayaran</label>
                                     </div>
-                                    <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white" type="file" name="foto_pembayaran" id="foto_pembayaran">
+                                    <input class="border-0 rounded-3 py-2 px-3 w-75 bg-white @error('foto_pembayaran') is-invalid @enderror" type="file" name="foto_pembayaran" id="foto_pembayaran">
+                                    @error('foto_pembayaran')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <input type="hidden" name="jenis_transaksi" value="pemasukan">

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="col-lg-12 col-lg-12 vh-100 d-flex justify-content-center flex-column" id="edit-user">
-    <div class="card mx-lg-4" style="background-color: #AD48FA; color: #f1f1f1">
+    <div class="card mx-lg-4" style="background-color: #24A384; color: #f1f1f1">
       <section class="nav-section py-3 px-4 d-flex align-items-center gap-1" style="font-size: 20px;">
         <a href="/member"><i class="fa-solid fa-arrow-left font-weight-bolder text-white"></i>
           <span class="fw-bolder px-2" style="color: #E2DFEB;">Edit Profile</span>
@@ -21,35 +21,50 @@
               @if ($user->gambar_user == Null)
                   <img src="{{ asset('assets/profile') }}/default.png" class="img-circle elevation-2" style="width:200px !important; height:200px !important;" alt="">
                   <input type="file" class="visually-hidden" accept="image/*" onchange="loadFile(event)" placeholder="gambar_user" name="gambar_user" id="gambar_user" enabled>
+                  @error('gambar_user')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
               @else
                   <img src="{{ asset('assets/profile') }}/{{ $user->gambar_user }}" style="width:200px !important; height:200px !important;" class="img-circle elevation-2" alt="">
                   <input type="file" class="visually-hidden" accept="image/*" onchange="loadFile(event)" placeholder="gambar_user" name="gambar_user" id="gambar_user" enabled>
-                  @endif
+                  @error('gambar_user')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+              @endif
           </label>
           <img src="" id="output" style="width:200px; height:200px;" class="img-circle elevation-2 position-absolute visually-hidden" alt="">
         </div>
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Nama</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" placeholder="nama" name="nama" id="nama" value="{{$user->nama}}" enabled>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="nama" name="nama" id="nama" value="{{$user->nama}}" enabled>
+            @error('nama')
+              <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
         </div>
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Email</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" placeholder="email" name="email" id="email" value="{{$user->email}}" enabled>
+            <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="email" name="email" id="email" value="{{$user->email}}" enabled>
+            @error('email')
+              <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
         </div>
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">No Telepon</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" placeholder="no_telepon" name="no_telepon" id="no_telepon" value="{{$user->no_telepon}}" enabled>
+            <input type="text" class="form-control @error('no_telepon') is-invalid @enderror" placeholder="no_telepon" name="no_telepon" id="no_telepon" value="{{$user->no_telepon}}" enabled>
+            @error('no_telepon')
+              <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
         </div>
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Password Baru</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" name="password" id="password" placeholder="{{$user->password}}" enabled>
+            <input type="text" class="form-control" placeholder="password" name="password" id="password" enabled>
           </div>
         </div>
         <div class="mb-3 row">
