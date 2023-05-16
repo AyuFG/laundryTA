@@ -32,13 +32,13 @@
                     <div class="d-flex justify-content-center align-content-center">
                         <i class="fa-regular fa-file-lines p-3" style="font-size: 2rem;"></i>
                     </div>
-                    <div class="d-flex flex-column justify-content-center">
+                    <div class="d-flex flex-column justify-content-center  overflow-hidden">
                         <p class="text-md fw-bolder">Pesanan #{{$transaksi->user_order}}</p>
                         <div class="d-flex">
                             <span class="text-md">
                                 {{$transaksi->waktu_order}}
                             </span>
-                            <span class="text-md px-2 text-truncate w-50">
+                            <span class="text-md px-2">
                                 {{Str::limit($transaksi->keluhan, 20)}}
                             </span>
                         </div>

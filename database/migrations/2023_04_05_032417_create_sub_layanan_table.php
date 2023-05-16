@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('sublayanan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('layanan_id')->nullable();
-            $table->foreign('layanan_id')->references('id')->on('layanan');
+            $table->foreign('layanan_id')->references('id')->on('layanan')
+            ->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('ikon_sub')->nullable();
             $table->string('nama_sub');
             $table->text('deskripsi_sub');

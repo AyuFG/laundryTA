@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class AdminSubLayananController extends Controller
 {
+    public function index()
+    {
+        $layanans = Layanan::all();
+        return view('admin.layanan.index', compact('layanans'));
+    }
+
     public function createSub(string $id)
     {
         $layanan = Layanan::where('id', $id)->first();
@@ -133,7 +139,7 @@ class AdminSubLayananController extends Controller
 
     public function destroy(string $id)
     {
-        $data = SubLayanan::findOrFail($id);
+        $data = SubLayanan::where('id', $id)->first();
         $data->delete();
 
         if (auth()->user()->roles_id == 1) {

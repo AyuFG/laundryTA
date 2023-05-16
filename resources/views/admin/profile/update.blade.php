@@ -58,7 +58,8 @@
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Email</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="email" name="email" id="email" value="{{$user->email}}" enabled>
+            <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="email" name="email" id="email" value="{{$user->email}}" disabled>
+            <input type="hidden" name="email" value="{{$user->email}}">
             @error('email')
               <div class="alert alert-danger">{{ $message }}</div>
             @enderror
