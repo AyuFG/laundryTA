@@ -16,9 +16,8 @@ class AdminTransaksiController extends Controller
      */
     public function index()
     {
-        $listorders = ListOrder::all();
-        $detailorders = DetailOrder::all();
-        return view('admin.transaksi.index', compact('listorders', 'detailorders'));
+        $listorders = ListOrder::orderBy('waktu_order', 'desc')->get();
+        return view('admin.transaksi.index', compact('listorders'));
     }
 
     public function indexLaporan()
