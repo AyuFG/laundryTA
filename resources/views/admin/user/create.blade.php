@@ -55,8 +55,7 @@
             <div class="col-sm-9">
               <select class="col-sm-12 col-form-label rounded-2" name="roles_id" id="roles_id" required>
                 @if (auth()->user()->roles_id == 1)
-                <option value="1">Super Admin</option>
-                <option selected value="2">Admin</option>
+                <option selected value="1">Admin</option>
                 @endif
                 <option value="3">Member</option>
                 <option value="99">Guest</option>
