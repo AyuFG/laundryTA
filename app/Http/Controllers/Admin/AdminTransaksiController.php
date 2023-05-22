@@ -22,7 +22,9 @@ class AdminTransaksiController extends Controller
 
     public function indexLaporan()
     {
-        $laporans = ListOrder::all();
+        $laporans = ListOrder::where('status_order', 'Selesai')
+        ->orderBy('waktu_order', 'desc')
+        ->get();
         return view('admin.pembukuan.laporan', compact('laporans'));
     }
 
