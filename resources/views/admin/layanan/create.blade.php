@@ -24,17 +24,18 @@
                     </button>
                 </div>
             </div>
-            <div class="card-body p-3 mb-2 bg-secondary text-white">
+            <div class="card-body p-3 bg-secondary text-white">
                 @csrf
                 <div class="d-flex justify-content-center m-4">
-                    <label for="ikon_layanan" style="cursor: pointer">
-                            <i class="fa-solid fa-camera fa-2xl"></i>
-                            <input type="file" class="visually-hidden" name="ikon_layanan" id="ikon_layanan" enabled>
+                    <label for="ikon_layanan" class="justify-content-center d-flex align-items-center" style="cursor: pointer">
+                            <i class="fa-solid fa-camera fa-2xl" id="ikon_fa"></i>
+                            <input type="file" onchange="loadFile(event)" class="visually-hidden" name="ikon_layanan" id="ikon_layanan" enabled>
                             @error('ikon_layanan')
                                 <span class="invalid-feedback text-center" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                            <img src="" id="output" style="max-width: 100px; max-height:100px; aspect-ratio: 1 / 1;" class="img-circle elevation-2 visually-hidden" alt="">
                     </label>
                 </div>
                 <div class="mb-3 pb-4 row">
@@ -80,20 +81,15 @@
 @endsection
 @section('script')
 <script>
-    function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#blah').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    var ikon = document.getElementById('ikon_fa');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+      ikon.classList.add("visually-hidden");
+      output.classList.remove("visually-hidden");
     }
-}
-
-$("#ikon_layanan").change(function(){
-    readURL(this);
-});
+  };
 </script>
 @endsection

@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = User::where( 'id', auth()->user()->id )->firstOrFail();
-        $layanans = Layanan::all();
+        $layanans = Layanan::take(4)->get();
         return view('home', compact('user', 'layanans'));
     }
 }

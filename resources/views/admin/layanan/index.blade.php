@@ -35,9 +35,9 @@
                     <a href="{{ route('super.layanan.show',$layanan->id) }}" class="text-decoration-none bg-dark px-3 me-1 rounded-4 w-60 d-flex align-items-center" style="min-height: 45px; width: 400px;">
                         <div class="d-flex align-items-center px-1 py-2">
                             @if ($layanan->ikon_layanan == Null)
-                                <img src="{{ asset('assets/ikon') }}/default.png" class="rounded-circle" style="width: 45px;" alt="ikon">
+                                <img src="{{ asset('assets/ikon') }}/default.png" class="rounded-circle" height="40" width="40" alt="ikon">
                             @else
-                                <img src="{{ asset('assets/ikon') }}/{{ $layanan->ikon_layanan }}" class="rounded-circle" style="width: 45px;" alt="ikon"/>
+                                <img src="{{ asset('assets/ikon') }}/{{ $layanan->ikon_layanan }}" class="rounded-circle" height="40" width="40" alt="ikon"/>
                             @endif
                         </div>
                         <div class="d-flex align-items-center w-100">
@@ -48,9 +48,9 @@
                     <a href="{{ route('admin.layanan.show',$layanan->id) }}" class="text-decoration-none bg-dark px-3 rounded-4 w-100 d-flex align-items-center">
                         <div class="d-flex align-items-center px-1 py-2">
                             @if ($layanan->ikon_layanan == Null)
-                                <img src="{{ asset('assets/ikon') }}/default.png" class="rounded-circle" style="width: 45px;" alt="ikon">
+                                <img src="{{ asset('assets/ikon') }}/default.png" class="rounded-circle" height="40" width="40" alt="ikon">
                             @else
-                                <img src="{{ asset('assets/ikon') }}/{{ $layanan->ikon_layanan }}" class="rounded-circle" style="width: 45px;" alt="ikon"/>
+                                <img src="{{ asset('assets/ikon') }}/{{ $layanan->ikon_layanan }}" class="rounded-circle" height="40" width="40" alt="ikon"/>
                             @endif
                         </div>
                         <div class="d-flex align-items-center w-100">

@@ -29,16 +29,17 @@
                     </button>
                 </div>
             </div>
-            <div class="card-body p-3 mb-2 bg-secondary text-white">
+            <div class="card-body p-3 bg-secondary text-white">
                 @csrf
                 <div class="d-flex justify-content-center m-4">
                     <label for="ikon_sub" style="cursor: pointer">
-                        <i class="fa-solid fa-camera fa-2xl"></i>
-                        <input type="file" class="visually-hidden" name="ikon_sub" id="ikon_sub" enabled>
+                        <i class="fa-solid fa-camera fa-2xl" id="ikon_fa"></i>
+                        <input type="file" onchange="loadFile(event)" class="visually-hidden" name="ikon_sub" id="ikon_sub" enabled>
                         @error('ikon_sub')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </label>
+                    <img src="" id="output" style="max-width: 100px; max-height:100px; aspect-ratio: 1 / 1;" class="img-circle elevation-2 visually-hidden" alt="">
                 </div>
                 <div class="mb-2 pb-2 row">
                     <label class="col-sm-3 col-form-label"
@@ -113,4 +114,18 @@
 </div>
 <!--./tambah sublayanan-->
 
+@endsection
+@section('script')
+<script>
+    var loadFile = function(event) {
+    var output = document.getElementById('output');
+    var ikon = document.getElementById('ikon_fa');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+      ikon.classList.add("visually-hidden");
+      output.classList.remove("visually-hidden");
+    }
+  };
+</script>
 @endsection
