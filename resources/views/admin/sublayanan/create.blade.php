@@ -39,7 +39,7 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </label>
-                    <img src="" id="output" style="max-width: 100px; max-height:100px; aspect-ratio: 1 / 1;" class="img-circle elevation-2 visually-hidden" alt="">
+                    <img src="" id="output" style="width:200px !important; height:200px !important;" class="img-circle elevation-2 visually-hidden" alt="">
                 </div>
                 <div class="mb-2 pb-2 row">
                     <label class="col-sm-3 col-form-label"

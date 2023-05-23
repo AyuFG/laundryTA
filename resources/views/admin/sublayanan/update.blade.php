@@ -38,18 +38,19 @@
                 <div class="d-flex justify-content-center m-4">
                 <label for="ikon_sub" style="cursor: pointer">
                     @if ($sublayanan->ikon_sub == Null)
-                        <i class="fa-solid fa-camera fa-2xl"></i>
-                        <input type="file" class="visually-hidden" name="ikon_sub" id="ikon_sub" enabled>
+                        <i class="fa-solid fa-camera fa-2xl" id="ikon_fa"></i>
+                        <input type="file" onchange="loadFile(event)" class="visually-hidden" name="ikon_sub" id="ikon_sub" enabled>
                         @error('ikon_sub')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     @else
-                        <img src="{{ asset('assets/ikon') }}/{{ $sublayanan->ikon_sub }}" style="width:200px !important; height:200px !important;" class="img-circle elevation-2" alt="">
-                        <input type="file" class="visually-hidden" name="ikon_sub" id="ikon_sub" enabled>
+                        <img src="{{ asset('assets/ikon') }}/{{ $sublayanan->ikon_sub }}" id="ikon_fa" style="width:200px !important; height:200px !important;" class="img-circle elevation-2" alt="">
+                        <input type="file" onchange="loadFile(event)" class="visually-hidden" name="ikon_sub" id="ikon_sub" enabled>
                         @error('ikon_sub')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     @endif
+                    <img src="" id="output" style="max-width: 200px; max-height:200px; aspect-ratio: 1 / 1;" class="img-circle elevation-2 visually-hidden" alt="">
                 </label>
                 </div>
                 <input type="hidden" name="layanan_id" value="{{$sublayanan->layanan_id}}">
@@ -126,4 +127,18 @@
 </div>
 <!--./edit sublayanan-->
 
+@endsection
+@section('script')
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    var ikon = document.getElementById('ikon_fa');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+      ikon.classList.add("visually-hidden");
+      output.classList.remove("visually-hidden");
+    }
+  };
+</script>
 @endsection

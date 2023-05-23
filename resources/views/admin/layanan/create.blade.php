@@ -35,7 +35,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            <img src="" id="output" style="max-width: 100px; max-height:100px; aspect-ratio: 1 / 1;" class="img-circle elevation-2 visually-hidden" alt="">
+                            <img src="" id="output" style="width:200px !important; height:200px !important;" class="img-circle elevation-2 visually-hidden" alt="">
                     </label>
                 </div>
                 <div class="mb-3 pb-4 row">

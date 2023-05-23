@@ -30,22 +30,23 @@
                 <div class="d-flex justify-content-center m-4">
                     <label for="ikon_layanan" style="cursor: pointer">
                         @if ($layanan->ikon_layanan == Null)
-                            <i class="fa-solid fa-camera fa-2xl"></i>
-                            <input type="file" class="visually-hidden" name="ikon_layanan" id="ikon_layanan" enabled>
+                            <i class="fa-solid fa-camera fa-2xl" id="ikon_fa"></i>
+                            <input type="file" onchange="loadFile(event)" class="visually-hidden" name="ikon_layanan" id="ikon_layanan" enabled>
                             @error('ikon_layanan')
                                 <span class="invalid-feedback text-center" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         @else
-                            <img src="{{ asset('assets/ikon') }}/{{ $layanan->ikon_layanan }}" style="width:200px !important; height:200px !important;" class="img-circle elevation-2" alt="">
-                            <input type="file" class="visually-hidden" name="ikon_layanan" id="ikon_layanan" enabled>
+                            <img src="{{ asset('assets/ikon') }}/{{ $layanan->ikon_layanan }}" id="ikon_fa" style="width:200px !important; height:200px !important;" class="img-circle elevation-2" alt="">
+                            <input type="file" onchange="loadFile(event)" class="visually-hidden" name="ikon_layanan" id="ikon_layanan" enabled>
                             @error('ikon_layanan')
                                 <span class="invalid-feedback text-center" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         @endif
+                        <img src="" id="output" style="max-width: 200px; max-height:200px; aspect-ratio: 1 / 1;" class="img-circle elevation-2 visually-hidden" alt="">
                     </label>
                 </div>
                 <div class="mb-3 pb-4 row">
@@ -90,4 +91,18 @@
 </div>
 <!--./edit layanan-->
 
+@endsection
+@section('script')
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    var ikon = document.getElementById('ikon_fa');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+      ikon.classList.add("visually-hidden");
+      output.classList.remove("visually-hidden");
+    }
+  };
+</script>
 @endsection

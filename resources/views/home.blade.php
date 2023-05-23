@@ -15,7 +15,7 @@
         <section class="nev-section py-5 px-4 d-flex justify-content-between align-items-center">
             <div class="p-2 d-flex rounded-4" style="background-color: #D6C37E;">
 @endif
-                <span class="fw-bolder m-2" style="font-size: 1rem">Laundry Sepatu SOC CLEAN Lampung</span>
+                <span class="fw-bolder m-2" style="font-size: 1rem">Laundry Sepatu SOC. CLEAN Lampung</span>
             </div>
             <div class="button-container d-flex justify-content-center align-items-center">
                 @if(auth()->user()->roles_id == 1)

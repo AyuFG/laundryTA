@@ -52,26 +52,17 @@
         </div>
       </div>
       <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Roles ID</label>
+        <label class="col-sm-3 col-form-label">Roles</label>
         <div class="col-sm-9">
-          <select class="form-control" name="roles_id" id="roles_id" value="{{$user->roles_id}}" disabled>
-            @if (auth()->user()->roles_id == 1)
-            <option value="1">Admin</option>
-            @endif
-            <option value="3">Member</option>
-            <option value="99">Guest</option>
-          </select>
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <div class="col-sm-9">
-          <a>
-            @if(auth()->user()->roles_id == 1)
-                <a class="btn btn-primary" href="{{ route('super.user.index') }}">Kembali</a>
-            @elseif(auth()->user()->roles_id == 2)
-                <a class="btn btn-primary" href="{{ route('admin.user.index') }}">Kembali</a>
-            @endif
-          </a>
+          @if ($user->roles_id==1)
+            <input class="form-control" name="roles_id" id="roles_id" value="Admin" disabled>
+          @elseif($user->roles_id==2)
+              <input class="form-control" name="roles_id" id="roles_id" value="Admin" disabled>
+          @elseif($user->roles_id==3)
+              <input class="form-control" name="roles_id" id="roles_id" value="Member" disabled>
+          @elseif($user->roles_id==99)
+              <input class="form-control" name="roles_id" id="roles_id" value="Guest" disabled>
+          @endif
         </div>
       </div>
       </form>
